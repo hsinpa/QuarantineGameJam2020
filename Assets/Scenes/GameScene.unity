@@ -395,6 +395,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: VillageManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1930601347557883560, guid: c4f30fc46f2ee274fb26207cecfdacf1,
+        type: 3}
+      propertyPath: spritePackerSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b9069c7f591f524e91e279859a05a80,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4f30fc46f2ee274fb26207cecfdacf1, type: 3}
 --- !u!114 &4819385390807538 stripped

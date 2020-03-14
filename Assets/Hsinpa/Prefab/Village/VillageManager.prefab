@@ -47,8 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectVillageSO: {fileID: 11400000, guid: 58a97afeebe88414189f0f6bffbec5b4, type: 2}
+  spritePackerSo: {fileID: 11400000, guid: 5b9069c7f591f524e91e279859a05a80, type: 2}
   travelerPrefab: {fileID: 4081682679140092351, guid: 7f3a50aa43d30da4e871eb1c7ba46f99,
     type: 3}
+  travelerHolders: {fileID: 4721737224153479268}
 --- !u!1 &4819385966084495
 GameObject:
   m_ObjectHideFlags: 0

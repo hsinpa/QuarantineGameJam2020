@@ -102,12 +102,150 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 4f9d599f5b876ba4db82348c0da6073f, type: 3}
     - {fileID: 2800000, guid: ab4e4c411ba6f284fab8d4c3fc403293, type: 3}
     - {fileID: 2800000, guid: baaf984156acbd746a1047ecc1691906, type: 3}
-    totalSpriteSurfaceArea: 2800
+    totalSpriteSurfaceArea: 232781
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 810c029bbc322f24488c5a2095ddb47f, type: 3}
+  - {fileID: 21300000, guid: eadce5006f235d84d9bc2888aa38701b, type: 3}
+  - {fileID: 21300000, guid: 0252a240de039e347b8168c4a7fe05e6, type: 3}
+  - {fileID: 21300000, guid: 9c90fc60c59b27148b4db7c03163a71a, type: 3}
+  - {fileID: 21300000, guid: 60fb2270a5442414ca5468711acc8286, type: 3}
+  - {fileID: 21300000, guid: 23676490df49c2047a0104c398914845, type: 3}
+  - {fileID: 21300000, guid: 958e72b00c1bfde4c93738edc3a319ef, type: 3}
+  - {fileID: 21300000, guid: 1f5f28c0ffc63a64c865d6eb8ff5a5ac, type: 3}
+  - {fileID: 21300000, guid: acb5c011e8eb9da46a4b918b6ee437a9, type: 3}
+  - {fileID: 21300000, guid: 0d4e4a21472264445afdf0e40965ca74, type: 3}
+  - {fileID: 21300000, guid: c9694731540110a4fa37ce05622667dc, type: 3}
+  - {fileID: 21300000, guid: baaf984156acbd746a1047ecc1691906, type: 3}
+  - {fileID: 21300000, guid: ab4e4c411ba6f284fab8d4c3fc403293, type: 3}
+  - {fileID: 21300000, guid: cd2658b1df8571649838dbf27888b14c, type: 3}
+  - {fileID: 21300000, guid: ef3ab3e1ea25e0f4298d7abdf09f2c57, type: 3}
+  - {fileID: 21300000, guid: 6a521312c54c980478518ab7ffc2c740, type: 3}
+  - {fileID: 21300000, guid: 54a14c323262c5e4b9c779c1733cc233, type: 3}
+  - {fileID: 21300000, guid: 04b88b62b89a6444bbfd8cde71d53f5f, type: 3}
+  - {fileID: 21300000, guid: abebd48240c2d414abd09b9ec90a8d0c, type: 3}
+  - {fileID: 21300000, guid: 92921523315718f409599fbe3695940f, type: 3}
+  - {fileID: 21300000, guid: 7cd88923dd263ff499f5e0c42eb631bd, type: 3}
+  - {fileID: 21300000, guid: 9c8d9c334f14a8f4c87057f9d612725b, type: 3}
+  - {fileID: 21300000, guid: 6b7896739baffdf40a717c323a089a3d, type: 3}
+  - {fileID: 21300000, guid: 8a7e4cb3fd86e59409c5f4d785770b1e, type: 3}
+  - {fileID: 21300000, guid: d19c9e14a06a36b44be05cc16b2dbc42, type: 3}
+  - {fileID: 21300000, guid: a184f324e0facc343a44b66d237f8584, type: 3}
+  - {fileID: 21300000, guid: 1c9d37a4fa7d98c43a5e0c5745616c6a, type: 3}
+  - {fileID: 21300000, guid: 134777b4b9bbaff45a410a9388acc577, type: 3}
+  - {fileID: 21300000, guid: 5ee5ff95479932f42b4a9d445681ade8, type: 3}
+  - {fileID: 21300000, guid: 246991368c586da49bae1704dc4a2aa8, type: 3}
+  - {fileID: 21300000, guid: dcb93756bc99df0488df7024585efabd, type: 3}
+  - {fileID: 21300000, guid: e4a00dc638614cd40baf777f154a9c24, type: 3}
+  - {fileID: 21300000, guid: b4ede8374da9a3844a254b368c370e49, type: 3}
+  - {fileID: 21300000, guid: c4d56387b2261fa479b0d1ec7d000b4d, type: 3}
+  - {fileID: 21300000, guid: 2ba2d59720ae58142aa9cfff7c4b9c04, type: 3}
+  - {fileID: 21300000, guid: d8bfff28dd905094da31bcc9b1974dd3, type: 3}
+  - {fileID: 21300000, guid: ac88d9298afa92a4db767953f216bf47, type: 3}
+  - {fileID: 21300000, guid: ed6308398b8e82f4daa1d4982fd02c40, type: 3}
+  - {fileID: 21300000, guid: 0126ddc93d430b2478d9e30073310ccf, type: 3}
+  - {fileID: 21300000, guid: 35d740f9cce6f584782041bd6092693a, type: 3}
+  - {fileID: 21300000, guid: 2c0e5af9dcf66ab4daf938b100a34d7a, type: 3}
+  - {fileID: 21300000, guid: fae1d31a6e0a0ee48b564ab385ce6131, type: 3}
+  - {fileID: 21300000, guid: dabba32a67472834da953c67f085bd66, type: 3}
+  - {fileID: 21300000, guid: 31bb882af04bf334a8b069bfa92dd49a, type: 3}
+  - {fileID: 21300000, guid: a53f454a9c147ae43b7cccdfc7ec8d80, type: 3}
+  - {fileID: 21300000, guid: c617366a8b5d92041b6a455060fb55c4, type: 3}
+  - {fileID: 21300000, guid: ea722d8a8441dfb4c8eb8e76cef0076f, type: 3}
+  - {fileID: 21300000, guid: 126eedda93d2c6148b51e5563ad1e4b6, type: 3}
+  - {fileID: 21300000, guid: d1ada4aba05b143449d8bc9d94a10f9d, type: 3}
+  - {fileID: 21300000, guid: 3fe569ab2231ba84aaa68d4e1568c618, type: 3}
+  - {fileID: 21300000, guid: 573910bbb4f75d94d92de986ffa91881, type: 3}
+  - {fileID: 21300000, guid: fc6ddb0c20dbe494a92fb67c627f64a4, type: 3}
+  - {fileID: 21300000, guid: d76c125c6bbfccb4384ac089c5fd59cd, type: 3}
+  - {fileID: 21300000, guid: 582702ac30fa8f5468e83e250abe1f2f, type: 3}
+  - {fileID: 21300000, guid: 8481650d7c5eb9c4e80ce0b71273f372, type: 3}
+  - {fileID: 21300000, guid: 4e51343dcf74bed4baeb6eaafc317a93, type: 3}
+  - {fileID: 21300000, guid: 89af0c5d18b80914696a037509bdab09, type: 3}
+  - {fileID: 21300000, guid: 76f6257d9f72cdc439c6c5558f06f813, type: 3}
+  - {fileID: 21300000, guid: 45c7b68d91c212d499e31119fde490fb, type: 3}
+  - {fileID: 21300000, guid: 1d71c78d384f3d349913fc6e8a4116ca, type: 3}
+  - {fileID: 21300000, guid: 891bd3bd4dc9bec4cbac9fe721de6aff, type: 3}
+  - {fileID: 21300000, guid: 52c602dd8dc86cc43900cde1ff4d23fd, type: 3}
+  - {fileID: 21300000, guid: 57ed9eddae402b643877696e0411eb6e, type: 3}
+  - {fileID: 21300000, guid: c39062ed7b1b4ae49add09b91d78d5c9, type: 3}
+  - {fileID: 21300000, guid: 2ab39c0e63189c74496f04c616a1649d, type: 3}
+  - {fileID: 21300000, guid: 656704aea8fe09e4d9e5384e4c26faec, type: 3}
+  - {fileID: 21300000, guid: d57404be2c0f4b74d82ac0e4e481c52c, type: 3}
+  - {fileID: 21300000, guid: 9d6b31fe19f52d6408f21e32b7d58942, type: 3}
+  - {fileID: 21300000, guid: da4dba0fe32e7fe49a9f6744f719960c, type: 3}
+  - {fileID: 21300000, guid: ed5e7d0f7d021f847b8a1900d2c8dca0, type: 3}
+  - {fileID: 21300000, guid: 4f9d599f5b876ba4db82348c0da6073f, type: 3}
   m_PackedSpriteNamesToIndex:
-  - peopleImage036
+  - mountain024
+  - mountain001
+  - mountain019
+  - peopleImage017
+  - mountain036
+  - mountain032
+  - mountain009
+  - mountain022
+  - peopleImage027
+  - mountain034
+  - peopleImage033
+  - peopleImage032
+  - mountain003
+  - peopleImage005
+  - mountain035
+  - peopleImage009
+  - mountain006
+  - mountain002
+  - peopleImage034
+  - peopleImage006
+  - peopleImage015
+  - peopleImage008
+  - mountain015
+  - peopleImage018
+  - mountain007
+  - mountain025
+  - mountain016
+  - peopleImage022
+  - peopleImage023
+  - peopleImage013
+  - mountain021
+  - peopleImage021
+  - mountain027
+  - peopleImage014
+  - mountain020
+  - peopleImage003
+  - mountain028
+  - peopleImage004
+  - mountain011
+  - peopleImage028
+  - mountain030
+  - mountain018
+  - mountain031
+  - peopleImage012
+  - mountain013
+  - peopleImage011
+  - mountain012
+  - mountain010
+  - peopleImage010
+  - mountain008
+  - peopleImage024
+  - peopleImage007
+  - peopleImage019
+  - mountain014
+  - peopleImage026
+  - peopleImage025
+  - peopleImage002
+  - peopleImage001
+  - mountain033
+  - peopleImage016
+  - peopleImage030
+  - peopleImage020
+  - mountain004
+  - mountain005
+  - peopleImage029
+  - mountain023
+  - mountain026
+  - mountain029
+  - mountain017
+  - peopleImage031
   m_Tag: SpritePacker
   m_IsVariant: 0

@@ -31,11 +31,9 @@ namespace JAM.Village
             MoveToConnectVillage();
         }
 
-        public void OnTravelerArrive(List<Traveler> travelers) {
-            if (travelers == null) return;
-            foreach (var t in travelers) { 
-                
-            }
+        public void OnTravelerArrive(Traveler traveler) {
+            if (traveler == null) return;
+            population += traveler.population;
         }
 
         private void EffectFromInfect() { 
@@ -44,14 +42,21 @@ namespace JAM.Village
 
         private void MoveToConnectVillage()
         {
+            var connectedVillages = _villageManager.FindAllConnectVillage(ID);
             DiseaseSO randomDisease = null;
-            if (diseases.Count > 0) {
+
+            if (diseases.Count > 0)
+            {
                 randomDisease = diseases[Random.Range(0, diseases.Count)];
             }
 
-            int travelerCount = Mathf.RoundToInt( population * travalerRate);
+            foreach (var c_village in connectedVillages) {
+                int travelerCount = Mathf.RoundToInt(population * travalerRate);
 
-            population -= travelerCount;
+                _villageManager.CreateTravler(this, c_village, travelerCount, randomDisease);
+
+                population -= travelerCount;
+            }
         }
     }
 }

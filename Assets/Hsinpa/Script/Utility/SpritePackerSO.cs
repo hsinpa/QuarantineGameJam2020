@@ -17,7 +17,6 @@ public class SpritePackerSO : ScriptableObject
     public Sprite FindSpriteByRandom()
     {
         int index = random.Next(0, sprites.Count);
-
         if (index < 0) return null;
 
         return sprites[index];

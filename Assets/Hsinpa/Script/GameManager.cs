@@ -18,13 +18,22 @@ public class GameManager : MonoBehaviour
         GameInit();
     }
 
-    public void GameInit() { 
-    
+    public void GameInit() {
+        villageManager.SetUp();
+        //villageManager.ProceedToNextState();
     }
 
     public void NextTurn() {
         if (villageManager != null)
             villageManager.ProceedToNextState();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            NextTurn();
+        }
     }
 
 }
