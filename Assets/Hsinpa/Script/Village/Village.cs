@@ -14,6 +14,9 @@ namespace JAM.Village
         [SerializeField]
         private List<DiseaseSO> diseases = new List<DiseaseSO>();
 
+        [SerializeField]
+        private DiseaseSO defaultDiseases;
+
         [SerializeField, Range(0, 0.1f)]
         private float travalerRate = 0.05f;
 
@@ -22,11 +25,18 @@ namespace JAM.Village
 
         public int totalPopulation => infectPopulation + healthpopulation;
         public float infectRate => infectPopulation / (float)healthpopulation;
+        public bool isDiseaseExist => diseases.Count > 0;
 
         private VillageManager _villageManager;
 
         public void SetUp(VillageManager villageManager) {
             _villageManager = villageManager;
+            diseases = new List<DiseaseSO>();
+        }
+
+        public void SetDisease() {
+            if (defaultDiseases != null)
+                diseases.Add(defaultDiseases);
         }
 
         public void ProceedToNextState() {

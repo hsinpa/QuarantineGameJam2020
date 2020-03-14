@@ -97,4 +97,5 @@ MonoBehaviour:
   ID: 
   spritePacker: {fileID: 11400000, guid: 5b9069c7f591f524e91e279859a05a80, type: 2}
   diseases: []
+  defaultDiseases: {fileID: 11400000, guid: 670989b8842ce8542b6cf8a0cd8bc9c2, type: 2}
   travalerRate: 0.05

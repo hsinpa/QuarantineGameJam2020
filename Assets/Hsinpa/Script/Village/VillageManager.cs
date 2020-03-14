@@ -7,8 +7,11 @@ using Utility;
 namespace JAM.Village {
     public class VillageManager : MonoBehaviour
     {
-        private List<Village> villages;
-        private List<Traveler> travelers;
+        private List<Village> _villages;
+        public List<Village> villages => _villages;
+        
+        private List<Traveler> _travelers;
+        public List<Traveler> travelers => _travelers;
 
         [SerializeField]
         private ConnectVillageSO connectVillageSO;
@@ -24,24 +27,24 @@ namespace JAM.Village {
 
 
         public void SetUp() {
-            villages = transform.GetComponentsInChildren<Village>().ToList();
-            travelers = new List<Traveler>();
+            _villages = transform.GetComponentsInChildren<Village>().ToList();
+            _travelers = new List<Traveler>();
 
-            int vLens = villages.Count;
+            int vLens = _villages.Count;
             for (int i = 0; i < vLens; i++)
-                villages[i].SetUp(this);
+                _villages[i].SetUp(this);
         }
 
         public void ProceedToNextState() {
             //Traveler
-            int tLens = travelers.Count;
+            int tLens = _travelers.Count;
             for (int i = 0; i < tLens; i++)
-                travelers[i].ProceedToNextState();
+                _travelers[i].ProceedToNextState();
 
             //Village
-            int vLens = villages.Count;
+            int vLens = _villages.Count;
             for (int i = 0; i < vLens; i++)
-                villages[i].ProceedToNextState();
+                _villages[i].ProceedToNextState();
         }
 
         public void CreateTravler(Village originate, Village desitination, int health_population, int infect_population, DiseaseSO carryDisease) {
@@ -53,7 +56,7 @@ namespace JAM.Village {
 
             traveler.SetTraveler(health_population, infect_population, RandomSprite, desitination, originate, carryDisease, 2, OnTravelersReachDestination);
 
-            travelers.Add(traveler);
+            _travelers.Add(traveler);
         }
 
         public List<Village> FindAllConnectVillage(string fromVillageID) {
@@ -64,11 +67,11 @@ namespace JAM.Village {
         private void OnTravelersReachDestination(Traveler traveler, Village desitination) {
             desitination.OnTravelerArrive(traveler);
 
-            travelers.Remove(traveler);
+            _travelers.Remove(traveler);
         }
 
         private Village FindVillageByID(string village_id) {
-            return villages.Find(x => x.ID == village_id);
+            return _villages.Find(x => x.ID == village_id);
         }
 
     }
