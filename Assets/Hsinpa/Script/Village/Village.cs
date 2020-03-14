@@ -17,8 +17,11 @@ namespace JAM.Village
         [SerializeField, Range(0, 0.1f)]
         private float travalerRate = 0.05f;
 
-        private int population;
-        private float infectPopulation;
+        private int healthpopulation;
+        private int infectPopulation;
+
+        public int totalPopulation => infectPopulation + healthpopulation;
+        public float infectRate => infectPopulation / (float)healthpopulation;
 
         private VillageManager _villageManager;
 
@@ -33,7 +36,8 @@ namespace JAM.Village
 
         public void OnTravelerArrive(Traveler traveler) {
             if (traveler == null) return;
-            population += traveler.population;
+            healthpopulation += traveler.health_population;
+            infectPopulation += traveler.infect_population;
         }
 
         private void EffectFromInfect() { 
@@ -51,11 +55,14 @@ namespace JAM.Village
             }
 
             foreach (var c_village in connectedVillages) {
-                int travelerCount = Mathf.RoundToInt(population * travalerRate);
 
-                _villageManager.CreateTravler(this, c_village, travelerCount, randomDisease);
+                int totalLeavePopulation = Mathf.RoundToInt(totalPopulation * travalerRate);
+                int infectLeavePopulation = Mathf.RoundToInt(totalLeavePopulation * infectRate);
 
-                population -= travelerCount;
+                _villageManager.CreateTravler(this, c_village, totalLeavePopulation, infectLeavePopulation, randomDisease);
+
+                healthpopulation -= totalLeavePopulation - infectLeavePopulation;
+                infectPopulation -= infectLeavePopulation;
             }
         }
     }

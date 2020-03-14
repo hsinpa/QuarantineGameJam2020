@@ -22,13 +22,16 @@ namespace JAM.Village
         private int timecost;
         private int timeSpent;
 
-        public int population;
+        public int health_population;
+        public int infect_population;
 
         private OnReachDestiny reachCallback;
 
-        public void SetTraveler(int population, Sprite sprite, Village destination, Village originate, DiseaseSO disease, int timecost, OnReachDestiny reachCallback) {
+        public void SetTraveler(int health_population, int infect_population, Sprite sprite, Village destination, Village originate, DiseaseSO disease, int timecost, OnReachDestiny reachCallback) {
             spriteRenderer.sprite = sprite;
-            this.population = population;
+            this.health_population = health_population;
+            this.infect_population = infect_population;
+
             this.destination = destination;
             this.originate = originate;
             this.timecost = timecost;
@@ -59,6 +62,8 @@ namespace JAM.Village
                 transform.DOMove(originate.transform.position + partialDest, timeReachRdn).onComplete = CheckReactDestination;
             }
         }
+
+
 
         private void CheckReactDestination() {
             if (timeSpent >= timecost)

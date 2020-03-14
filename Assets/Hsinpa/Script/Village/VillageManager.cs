@@ -44,14 +44,14 @@ namespace JAM.Village {
                 villages[i].ProceedToNextState();
         }
 
-        public void CreateTravler(Village originate, Village desitination, int population, DiseaseSO carryDisease) {
+        public void CreateTravler(Village originate, Village desitination, int health_population, int infect_population, DiseaseSO carryDisease) {
             if (spritePackerSo == null) return;
 
             var travelObject = UtilityMethod.CreateObjectToParent(travelerHolders.transform, travelerPrefab.gameObject);
             Traveler traveler = travelObject.GetComponent<Traveler>();
             Sprite RandomSprite  = spritePackerSo.FindSpriteByRandom();
 
-            traveler.SetTraveler(population, RandomSprite, desitination, originate, carryDisease, 2, OnTravelersReachDestination);
+            traveler.SetTraveler(health_population, infect_population, RandomSprite, desitination, originate, carryDisease, 2, OnTravelersReachDestination);
 
             travelers.Add(traveler);
         }
