@@ -51,7 +51,9 @@ namespace JAM.Village
         }
 
         private void EffectFromInfect() { 
-        
+            
+
+
         }
 
         private void MoveToConnectVillage()
@@ -67,7 +69,7 @@ namespace JAM.Village
             foreach (var c_village in connectedVillages) {
 
                 int totalLeavePopulation = Mathf.RoundToInt(totalPopulation * travalerRate);
-                int infectLeavePopulation = Mathf.RoundToInt(totalLeavePopulation * infectRate);
+                int infectLeavePopulation = Mathf.RoundToInt(totalLeavePopulation * Mathf.Clamp(infectRate + Random.Range(-0.05f, 0), 0, 1 ));
 
                 _villageManager.CreateTravler(this, c_village, totalLeavePopulation, infectLeavePopulation, randomDisease);
 

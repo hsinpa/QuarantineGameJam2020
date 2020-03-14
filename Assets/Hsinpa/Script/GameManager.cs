@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
         bool isDieaseExplode = diseaseManager.IsExplodeDisease();
         Village newInfectVillage = diseaseManager.GetExplodeVillage(villageManager.villages);
 
-        if (newInfectVillage != null && isDieaseExplode) { 
-            
+        if (newInfectVillage != null && isDieaseExplode) {
+            newInfectVillage.SetDisease();
         }
 
         if (villageManager != null)
