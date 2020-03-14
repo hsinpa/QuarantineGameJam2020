@@ -37,6 +37,10 @@ namespace JAM.Village
         public void SetDisease() {
             if (defaultDiseases != null)
                 diseases.Add(defaultDiseases);
+
+            int infectPeople = Mathf.FloorToInt(healthpopulation * defaultDiseases.explosionRate);
+
+            AffectPopulationWithInfectNum(infectPeople);
         }
 
         public void ProceedToNextState() {
@@ -50,9 +54,19 @@ namespace JAM.Village
             infectPopulation += traveler.infect_population;
         }
 
-        private void EffectFromInfect() { 
-            
+        private void EffectFromInfect() {
 
+            //Calculate new Infect
+            int baseInfectNumPerPerson = 3;
+            int possibleInfectPerPerson = Random.Range(baseInfectNumPerPerson - 2, baseInfectNumPerPerson + 2);
+
+            int actualInfectHealthPerson = Mathf.RoundToInt( (1 - infectRate) * possibleInfectPerPerson * infectPopulation);
+            AffectPopulationWithInfectNum(actualInfectHealthPerson);
+
+            //Calculate death
+
+
+            //Calculate cured
 
         }
 
@@ -76,6 +90,12 @@ namespace JAM.Village
                 healthpopulation -= totalLeavePopulation - infectLeavePopulation;
                 infectPopulation -= infectLeavePopulation;
             }
+        }
+
+        private void AffectPopulationWithInfectNum(int newInfectNum) {
+            healthpopulation -= newInfectNum;
+            infectPopulation += newInfectNum;
+
         }
     }
 }

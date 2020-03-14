@@ -12,6 +12,7 @@ public class DiseaseSO : ScriptableObject
     public float infectRate;
     public float deathRate;
     public float panicRate;
+    public float explosionRate = 0.1f;
 
     public float errorRange;
 
