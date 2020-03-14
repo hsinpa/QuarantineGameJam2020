@@ -18,9 +18,11 @@ namespace JAM.Village
         private int timecost;
         private int timeleft;
 
-        public void SetTraveler(Sprite sprite, Village destination, Village originate, DiseaseSO disease, int timecost) {
-            spriteRenderer.sprite = sprite;
+        private int population;
 
+        public void SetTraveler(int population, Sprite sprite, Village destination, Village originate, DiseaseSO disease, int timecost) {
+            spriteRenderer.sprite = sprite;
+            this.population = population;
             this.destination = destination;
             this.originate = originate;
             this.timecost = timecost;

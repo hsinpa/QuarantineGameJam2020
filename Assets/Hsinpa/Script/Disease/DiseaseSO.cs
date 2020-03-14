@@ -14,4 +14,21 @@ public class DiseaseSO : ScriptableObject
     public float panicRate;
 
     public float errorRange;
+
+    public float GetRndInfectRate() {
+        float rdnRate = Random.Range(infectRate - errorRange, infectRate + errorRange);
+        return Mathf.Clamp(rdnRate, 0, rdnRate);
+    }
+
+    public float GetRndDeathRate()
+    {
+        float rdnRate = Random.Range(deathRate - errorRange, deathRate + errorRange);
+        return Mathf.Clamp(rdnRate, 0, rdnRate);
+    }
+
+    public float GetRndPanicRate()
+    {
+        float rdnRate = Random.Range(panicRate - errorRange, panicRate + errorRange);
+        return Mathf.Clamp(rdnRate, 0, rdnRate);
+    }
 }

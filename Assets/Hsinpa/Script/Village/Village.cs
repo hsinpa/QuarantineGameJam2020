@@ -6,13 +6,10 @@ namespace JAM.Village
 {
     public class Village : MonoBehaviour
     {
-        public int ID;
+        public string ID;
 
         [SerializeField]
         private SpritePackerSO spritePacker;
-
-        [SerializeField]
-        private int[] ConnectVillagesID;
 
         [SerializeField]
         private List<DiseaseSO> diseases = new List<DiseaseSO>();
@@ -47,7 +44,14 @@ namespace JAM.Village
 
         private void MoveToConnectVillage()
         {
+            DiseaseSO randomDisease = null;
+            if (diseases.Count > 0) {
+                randomDisease = diseases[Random.Range(0, diseases.Count)];
+            }
 
+            int travelerCount = Mathf.RoundToInt( population * travalerRate);
+
+            population -= travelerCount;
         }
     }
 }
