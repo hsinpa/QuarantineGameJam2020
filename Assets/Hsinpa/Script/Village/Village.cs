@@ -42,9 +42,11 @@ namespace JAM.Village
         public bool isDiseaseExist => diseases.Count > 0;
 
         private VillageManager _villageManager;
+        private ActionHandler actionHandler;
 
-        public void SetUp(VillageManager villageManager) {
+        public void SetUp(VillageManager villageManager, ActionHandler actionHandler) {
             _villageManager = villageManager;
+            this.actionHandler = actionHandler;
             diseases = new List<DiseaseSO>();
 
             Reset();
@@ -75,6 +77,14 @@ namespace JAM.Village
             _infectPopulation += traveler.infect_population;
         }
 
+        public void Cure() {
+            int cureCount = Mathf.RoundToInt( _infectPopulation * Random.Range(StatFlag.BaseModifier.baseCureRate - StatFlag.BaseModifier.baseErrorRate,
+                                                            StatFlag.BaseModifier.baseCureRate + StatFlag.BaseModifier.baseErrorRate));
+            
+            _healthpopulation += cureCount;
+            _infectPopulation -= cureCount;
+        }
+
         private void EffectFromInfect() {
             //Calculate death
             int deathCount = Mathf.RoundToInt(_infectPopulation * defaultDiseases.GetRndDeathRate());
@@ -82,16 +92,24 @@ namespace JAM.Village
             _deadPopulation += deathCount;
 
             //Calculate new Infect
-            AffectPopulationWithInfectNum( InfectionMethod.CalculateInfectPeople(infectRate, _infectPopulation, defaultDiseases.GetRndInfectRate()));
+            float rdnInfectRate = defaultDiseases.GetRndInfectRate();
+
+            if (actionHandler.GetValue(StatFlag.ActionStat.Quarantine, ID) > 0)
+                rdnInfectRate = 0.001f;
+
+            AffectPopulationWithInfectNum( InfectionMethod.CalculateInfectPeople(infectRate, _infectPopulation, rdnInfectRate));
 
             //Calculate cured
-
         }
 
         private void MoveToConnectVillage()
         {
             var connectedVillages = _villageManager.FindAllConnectVillage(ID);
             DiseaseSO randomDisease = null;
+
+            //Apply Quarantine Skill
+            if (actionHandler.GetValue(StatFlag.ActionStat.Quarantine, ID) > 0)
+                return;
 
             if (diseases.Count > 0)
             {

@@ -36,22 +36,28 @@ namespace JAM.Village {
         private Village _onClickVillage = null;
         public Village onClickVillage => _onClickVillage;
 
+        private ActionHandler actionHandler;
+
         private VillageInputCtrl villageInputCtrl;
         private OverallUIView overallUIView;
 
-        public void SetUp(VillageInputCtrl villageInputCtrl, OverallUIView overallUIView) {
+        public void SetUp(VillageInputCtrl villageInputCtrl, OverallUIView overallUIView, ActionHandler actionHandler) {
+
             this.overallUIView = overallUIView;
             this.villageInputCtrl = villageInputCtrl;
+            this.actionHandler = actionHandler;
 
             _villages = transform.GetComponentsInChildren<Village>().ToList();
             _travelers = new List<Traveler>();
             _onClickVillage = null;
             int vLens = _villages.Count;
             for (int i = 0; i < vLens; i++)
-                _villages[i].SetUp(this);
+                _villages[i].SetUp(this, actionHandler);
 
-            if (this.villageInputCtrl.OnVillageObjectClick == null)
+            if (this.villageInputCtrl.OnVillageObjectClick == null) {
+                RegisterButtonEvent();
                 this.villageInputCtrl.OnVillageObjectClick += OnVillageClick;
+            }
 
             _initialPopulation = villages.Sum(x => x.totalPopulation);
 
@@ -120,11 +126,34 @@ namespace JAM.Village {
         }
 
         private void UpdateBottomUIView() {
-            bool hasLabBt = (_onClickVillage != null && _onClickVillage.facility == StatFlag.Facility.University);
-            overallUIView.baseButtonView.labBt.gameObject.SetActive(hasLabBt);
+            bool hasLabBt = (_onClickVillage != null && _onClickVillage.facility == StatFlag.Facility.University) && actionHandler.CheckActionValid(StatFlag.ActionStat.Lab, _onClickVillage.ID);
+            overallUIView.baseButtonView.labBt.interactable = (hasLabBt);
 
-            bool hasHospitalBt = (_onClickVillage != null && _onClickVillage.facility == StatFlag.Facility.Hospital);
-            overallUIView.baseButtonView.hospitalBt.gameObject.SetActive(hasHospitalBt);
+            bool hasHospitalBt = (_onClickVillage != null && _onClickVillage.facility == StatFlag.Facility.Hospital) && actionHandler.CheckActionValid(StatFlag.ActionStat.Cure, _onClickVillage.ID);
+            overallUIView.baseButtonView.hospitalBt.interactable = (hasHospitalBt);
+
+            bool hasQuarantineBt = (_onClickVillage != null) && actionHandler.CheckActionValid(StatFlag.ActionStat.Quarantine, _onClickVillage.ID);
+            overallUIView.baseButtonView.quarantineBt.interactable = (hasQuarantineBt);
+
+            bool hasTechBt = actionHandler.CheckActionValid(StatFlag.ActionStat.Investigate);
+            overallUIView.baseButtonView.techBt.interactable = (hasTechBt);
+        }
+
+        private void RegisterButtonEvent() {
+            if (overallUIView.baseButtonView.buttonGroup != null) {
+                foreach (var buttonTip in overallUIView.baseButtonView.buttonGroup) {
+
+                    UnityEngine.UI.Button button = buttonTip.GetComponent<UnityEngine.UI.Button>();
+
+                    button.onClick.AddListener(() =>
+                    {
+                        actionHandler.ExecuteAction(buttonTip.skill_id, (buttonTip.skill_id != StatFlag.ActionStat.Investigate) ?  onClickVillage.ID : "");
+                        button.interactable = (false);
+
+                        OnVillageClick(onClickVillage);
+                    });
+                }
+            }
         }
     }
 }

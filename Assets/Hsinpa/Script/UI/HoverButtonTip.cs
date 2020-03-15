@@ -13,8 +13,7 @@ public class HoverButtonTip : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField]
     Text floatTipText;
 
-    [SerializeField]
-    string skill_id;
+    public string skill_id;
 
 
     public void Start() {

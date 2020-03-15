@@ -14,4 +14,6 @@ public class BottomButtonView : BaseUIView
     public Button labBt;
 
     public Button hospitalBt;
+
+    public HoverButtonTip[] buttonGroup;
 }
