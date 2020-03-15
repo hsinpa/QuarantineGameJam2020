@@ -20,16 +20,23 @@ public class GameManager : MonoBehaviour
     private VillageInputCtrl villageInputCtrl;
 
     public static SkillJsonBase skillJsonBase;
-    private int turn_count = 1;
+
+    private int _turn_count = 1;
+    public int turn_count => _turn_count;
 
     public TechModel techModel;
     public TechViewPresenter techViewPresenter;
 
+    private ActionHandler actionHandler;
+
     public int investigationPower {
         get {
             int baseValue = 1;
-            int universityPlus = villageManager.villages.Count(x => x.facility == StatFlag.Facility.University && !x.isVillageDestroy);
-            return baseValue + universityPlus;
+            int universityCount = villageManager.villages.Count(x => x.facility == StatFlag.Facility.University && !x.isVillageDestroy);
+
+            int universityPlus = villageManager.villages.Sum(x =>  (int)actionHandler.GetValue(StatFlag.ActionStat.Lab, x.ID) * ((x.isVillageDestroy) ? 0 : 1) );
+
+            return baseValue + universityCount + universityPlus;
         }
     }
 
@@ -43,20 +50,24 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        actionHandler = new ActionHandler(villageManager, this);
+
         RegisterBottomViewEvent();
         GameInit();
     }
 
     public void GameInit() {
-        turn_count = 1;
-        villageManager.SetUp(villageInputCtrl, overallUIView);
+        _turn_count = 1;
+        villageManager.SetUp(villageInputCtrl, overallUIView, actionHandler);
 
         UpdateHeaderUIView();
         //villageManager.ProceedToNextState();
     }
 
     public void NextTurn() {
-        turn_count++;
+        _turn_count++;
+
+        actionHandler.ProceedToNextState();
 
         bool isDieaseExplode = diseaseManager.IsExplodeDisease();
         Village newInfectVillage = diseaseManager.GetExplodeVillage(villageManager.villages);
@@ -88,7 +99,7 @@ public class GameManager : MonoBehaviour
     {
         string statsInfo = "Turn {0}";
 
-        statsInfo = string.Format(statsInfo, turn_count);
+        statsInfo = string.Format(statsInfo, _turn_count);
 
         overallUIView.headerUIView.statText.text = statsInfo;
 
