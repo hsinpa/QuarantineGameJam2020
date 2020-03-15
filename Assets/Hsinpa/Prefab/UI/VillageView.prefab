@@ -1127,6 +1127,12 @@ PrefabInstance:
       propertyPath: skill_id
       value: Develop Tech
       objectReference: {fileID: 0}
+    - target: {fileID: 8227211745509561339, guid: f8ab54c90a3a2814a978a9aaf3861fba,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6c772797cb93690479ed7bffb30e83fb,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ab54c90a3a2814a978a9aaf3861fba, type: 3}
 --- !u!224 &1361211576092607305 stripped
@@ -1269,6 +1275,12 @@ PrefabInstance:
       propertyPath: skill_id
       value: Cure
       objectReference: {fileID: 0}
+    - target: {fileID: 8227211745509561339, guid: f8ab54c90a3a2814a978a9aaf3861fba,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c893ee28b47bae418c8decd308f5e98,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ab54c90a3a2814a978a9aaf3861fba, type: 3}
 --- !u!224 &6788071205151768830 stripped
@@ -1410,6 +1422,11 @@ PrefabInstance:
         type: 3}
       propertyPath: skill_id
       value: Quarantine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176170801153254637, guid: f8ab54c90a3a2814a978a9aaf3861fba,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ab54c90a3a2814a978a9aaf3861fba, type: 3}
@@ -1553,6 +1570,12 @@ PrefabInstance:
       propertyPath: skill_id
       value: Improve lab quality
       objectReference: {fileID: 0}
+    - target: {fileID: 8227211745509561339, guid: f8ab54c90a3a2814a978a9aaf3861fba,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4236fb4ea293a084a83a5d7659511e07,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ab54c90a3a2814a978a9aaf3861fba, type: 3}
 --- !u!224 &8224701834608670262 stripped

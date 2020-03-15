@@ -78,6 +78,8 @@ namespace JAM.Village
 
             this.health_population -= newInfectPatient;
             this.infect_population += newInfectPatient;
+
+            this.originate.ActDeathByTraveler(deathCount);
         }
 
         private void CheckReactDestination() {

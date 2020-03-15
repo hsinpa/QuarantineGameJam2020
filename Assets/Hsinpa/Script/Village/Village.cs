@@ -109,6 +109,10 @@ namespace JAM.Village
 
         }
 
+        public void ActDeathByTraveler(int travelerDeath) {
+            _deadPopulation += travelerDeath;
+        }
+
         public void Reset()
         {
             diseases.Clear();
