@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
         if (villageManager != null)
             villageManager.ProceedToNextState();
 
+        techViewPresenter?.OnNextTurn();
+
         UpdateHeaderUIView();
     }
 

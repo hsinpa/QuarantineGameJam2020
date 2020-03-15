@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TechViewPresenter : MonoBehaviour
 {
-    public int GLOBAL_RESEARCHPOWER=5;
     //for current tech
     public GameObject CurrentTechRoot;
     public Image CurrentTechIcon;
@@ -33,7 +32,6 @@ public class TechViewPresenter : MonoBehaviour
 
     void PopulateGrid()
     {
-        Debug.LogError(_techModel.techTree.allTechs.Count);
         foreach (var t in _techModel.techTree.allTechs)
         {
             var go = Instantiate(TechIconPrefab, GridObject.transform, false);
@@ -74,11 +72,10 @@ public class TechViewPresenter : MonoBehaviour
         //this.CurrentTechIcon.sprite = Resources.Load<Sprite>(tech.imagePath);
     }
 
-    public void NextTurn()
+    public void OnNextTurn()
     {
-        _techModel.AdvanceCurrentTech(GLOBAL_RESEARCHPOWER);
+        _techModel.AdvanceCurrentTech();
         _techModel.CheckProgress();
-
         UpdateUI();
     }
 
@@ -129,6 +126,8 @@ public class TechViewPresenter : MonoBehaviour
 
         SetUpEvents();
         PopulateGrid();
+
+        _techModel.OnTechCompleteEvent.AddListener (x => Debug.LogError("Research Complete="+x.techName));
     }
 
     // Update is called once per frame
