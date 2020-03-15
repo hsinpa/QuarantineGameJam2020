@@ -50,6 +50,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Village_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5445917913337163107, guid: 559db86dc3b42674e9fba3ef68776b8a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -135,6 +145,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Village_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.35
       objectReference: {fileID: 0}
     - target: {fileID: 5445917913337163107, guid: 559db86dc3b42674e9fba3ef68776b8a,
         type: 3}
@@ -222,6 +242,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Village_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5445917913337163107, guid: 559db86dc3b42674e9fba3ef68776b8a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -288,6 +318,11 @@ PrefabInstance:
       propertyPath: ID
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: facility
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}
 --- !u!4 &5587269447839974017 stripped
@@ -307,6 +342,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Village_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.41
       objectReference: {fileID: 0}
     - target: {fileID: 5445917913337163107, guid: 559db86dc3b42674e9fba3ef68776b8a,
         type: 3}
@@ -394,6 +439,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Village_01 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5445917913337163107, guid: 559db86dc3b42674e9fba3ef68776b8a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -460,6 +515,11 @@ PrefabInstance:
       propertyPath: ID
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: facility
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}
 --- !u!4 &5587269447944272359 stripped
@@ -479,6 +539,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Village_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.41
       objectReference: {fileID: 0}
     - target: {fileID: 5445917913337163107, guid: 559db86dc3b42674e9fba3ef68776b8a,
         type: 3}
@@ -546,6 +616,11 @@ PrefabInstance:
       propertyPath: ID
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: facility
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}
 --- !u!4 &5587269448345613625 stripped
@@ -565,6 +640,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Village_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: 5445917913337163107, guid: 559db86dc3b42674e9fba3ef68776b8a,
         type: 3}
@@ -632,6 +717,11 @@ PrefabInstance:
       propertyPath: ID
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: facility
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}
 --- !u!4 &5587269448627280964 stripped
@@ -651,6 +741,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Village_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177780629273320463, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.35
       objectReference: {fileID: 0}
     - target: {fileID: 5445917913337163107, guid: 559db86dc3b42674e9fba3ef68776b8a,
         type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility;
 
 namespace JAM.Village
 {
@@ -20,11 +21,20 @@ namespace JAM.Village
         [SerializeField, Range(0, 0.1f)]
         private float travalerRate = 0.05f;
 
-        private int healthpopulation;
-        private int infectPopulation;
+        public StatFlag.Facility facility;
 
-        public int totalPopulation => infectPopulation + healthpopulation;
-        public float infectRate => infectPopulation / (float)healthpopulation;
+        private int _healthpopulation;
+        public int healthPopulation => _healthpopulation;
+
+        private int _infectPopulation;
+        public int infectPopulation => _infectPopulation;
+
+        private int _deadPopulation;
+        public int deadPopulation => _deadPopulation;
+
+
+        public int totalPopulation => _infectPopulation + _healthpopulation;
+        public float infectRate => _infectPopulation / (float)_healthpopulation;
         public bool isDiseaseExist => diseases.Count > 0;
 
         private VillageManager _villageManager;
@@ -32,13 +42,15 @@ namespace JAM.Village
         public void SetUp(VillageManager villageManager) {
             _villageManager = villageManager;
             diseases = new List<DiseaseSO>();
+
+            Reset();
         }
 
         public void SetDisease() {
             if (defaultDiseases != null)
                 diseases.Add(defaultDiseases);
 
-            int infectPeople = Mathf.FloorToInt(healthpopulation * defaultDiseases.explosionRate);
+            int infectPeople = Mathf.FloorToInt(_healthpopulation * defaultDiseases.GetRndExplosionRate());
 
             AffectPopulationWithInfectNum(infectPeople);
         }
@@ -50,24 +62,20 @@ namespace JAM.Village
 
         public void OnTravelerArrive(Traveler traveler) {
             if (traveler == null) return;
-            healthpopulation += traveler.health_population;
-            infectPopulation += traveler.infect_population;
+            _healthpopulation += traveler.health_population;
+            _infectPopulation += traveler.infect_population;
         }
 
         private void EffectFromInfect() {
+            //Calculate death
+            int deathCount = Mathf.RoundToInt(_infectPopulation * defaultDiseases.GetRndDeathRate());
+            _infectPopulation -= deathCount;
+            _deadPopulation += deathCount;
 
             //Calculate new Infect
-            int baseInfectNumPerPerson = 3;
-            int possibleInfectPerPerson = Random.Range(baseInfectNumPerPerson - 2, baseInfectNumPerPerson + 2);
-
-            int actualInfectHealthPerson = Mathf.RoundToInt( (1 - infectRate) * possibleInfectPerPerson * infectPopulation);
-            AffectPopulationWithInfectNum(actualInfectHealthPerson);
-
-            //Calculate death
-
+            AffectPopulationWithInfectNum( InfectionMethod.CalculateInfectPeople(infectRate, _infectPopulation, defaultDiseases.GetRndInfectRate()));
 
             //Calculate cured
-
         }
 
         private void MoveToConnectVillage()
@@ -81,21 +89,32 @@ namespace JAM.Village
             }
 
             foreach (var c_village in connectedVillages) {
+                float travelerSpawnRate = 0.35f;
+                bool spawnTraveler = Random.Range(0, 1f) < travelerSpawnRate;
+                if (!spawnTraveler) continue;
 
                 int totalLeavePopulation = Mathf.RoundToInt(totalPopulation * travalerRate);
                 int infectLeavePopulation = Mathf.RoundToInt(totalLeavePopulation * Mathf.Clamp(infectRate + Random.Range(-0.05f, 0), 0, 1 ));
 
                 _villageManager.CreateTravler(this, c_village, totalLeavePopulation, infectLeavePopulation, randomDisease);
 
-                healthpopulation -= totalLeavePopulation - infectLeavePopulation;
-                infectPopulation -= infectLeavePopulation;
+                _healthpopulation -= totalLeavePopulation - infectLeavePopulation;
+                _infectPopulation -= infectLeavePopulation;
             }
         }
 
         private void AffectPopulationWithInfectNum(int newInfectNum) {
-            healthpopulation -= newInfectNum;
-            infectPopulation += newInfectNum;
+            _healthpopulation -= newInfectNum;
+            _infectPopulation += newInfectNum;
 
+        }
+
+        public void Reset()
+        {
+            diseases.Clear();
+            _healthpopulation = Random.Range(6000,10000);
+            _infectPopulation = 0;
+            _deadPopulation = 0;
         }
     }
 }

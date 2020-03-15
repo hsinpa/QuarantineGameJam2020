@@ -32,4 +32,10 @@ public class DiseaseSO : ScriptableObject
         float rdnRate = Random.Range(panicRate - errorRange, panicRate + errorRange);
         return Mathf.Clamp(rdnRate, 0, rdnRate);
     }
+
+    public float GetRndExplosionRate()
+    {
+        float rdnRate = Random.Range(explosionRate - errorRange, explosionRate + errorRange);
+        return Mathf.Clamp(rdnRate, 0, rdnRate);
+    }
 }

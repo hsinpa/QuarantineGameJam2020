@@ -25,14 +25,38 @@ namespace JAM.Village {
         [SerializeField]
         private GameObject travelerHolders;
 
+        public int wholePopulation => villages.Sum(x => x.totalPopulation);
+        public int wholeHealthPopulation => villages.Sum(x => x.healthPopulation);
+        public int wholeInfectPopulation => villages.Sum(x => x.infectPopulation);
+        public int wholedeadPopulation => villages.Sum(x => x.deadPopulation);
 
-        public void SetUp() {
+        private int _initialPopulation;
+        public int initialPopulation => _initialPopulation;
+
+        private Village _onClickVillage = null;
+        public Village onClickVillage => _onClickVillage;
+
+        private VillageInputCtrl villageInputCtrl;
+        private OverallUIView overallUIView;
+
+        public void SetUp(VillageInputCtrl villageInputCtrl, OverallUIView overallUIView) {
+            this.overallUIView = overallUIView;
+            this.villageInputCtrl = villageInputCtrl;
+
             _villages = transform.GetComponentsInChildren<Village>().ToList();
             _travelers = new List<Traveler>();
-
+            _onClickVillage = null;
             int vLens = _villages.Count;
             for (int i = 0; i < vLens; i++)
                 _villages[i].SetUp(this);
+
+            if (this.villageInputCtrl.OnVillageObjectClick == null)
+                this.villageInputCtrl.OnVillageObjectClick += OnVillageClick;
+
+            _initialPopulation = villages.Sum(x => x.totalPopulation);
+
+            OnVillageClick(_onClickVillage);
+            UpdateBottomUIView();
         }
 
         public void ProceedToNextState() {
@@ -45,6 +69,9 @@ namespace JAM.Village {
             int vLens = _villages.Count;
             for (int i = 0; i < vLens; i++)
                 _villages[i].ProceedToNextState();
+
+            OnVillageClick(_onClickVillage);
+            UpdateBottomUIView();
         }
 
         public void CreateTravler(Village originate, Village desitination, int health_population, int infect_population, DiseaseSO carryDisease) {
@@ -54,7 +81,9 @@ namespace JAM.Village {
             Traveler traveler = travelObject.GetComponent<Traveler>();
             Sprite RandomSprite  = spritePackerSo.FindSpriteByRandom();
 
-            traveler.SetTraveler(health_population, infect_population, RandomSprite, desitination, originate, carryDisease, 2, OnTravelersReachDestination);
+            int timeCost = Random.Range(2, 5);
+
+            traveler.SetTraveler(health_population, infect_population, RandomSprite, desitination, originate, carryDisease, timeCost, OnTravelersReachDestination);
 
             _travelers.Add(traveler);
         }
@@ -74,5 +103,28 @@ namespace JAM.Village {
             return _villages.Find(x => x.ID == village_id);
         }
 
+        private void OnVillageClick(Village village) {
+            _onClickVillage = village;
+            UpdateBottomUIView();
+
+            overallUIView.villageInfoView.Show(village != null);
+            if (village != null)
+            {
+                string villageName = "Village " + village.ID;
+
+                string info = "Population {0}\nInfect : {1}\nDead : {2}\nFacility : {3}";
+
+                overallUIView.villageInfoView.SetTitle(villageName);
+                overallUIView.villageInfoView.SetInfo(string.Format(info, village.totalPopulation, village.infectPopulation, village.deadPopulation, village.facility.ToString("g")));
+            }
+        }
+
+        private void UpdateBottomUIView() {
+            bool hasLabBt = (_onClickVillage != null && _onClickVillage.facility == StatFlag.Facility.University);
+            overallUIView.baseButtonView.labBt.gameObject.SetActive(hasLabBt);
+
+            bool hasHospitalBt = (_onClickVillage != null && _onClickVillage.facility == StatFlag.Facility.Hospital);
+            overallUIView.baseButtonView.hospitalBt.gameObject.SetActive(hasHospitalBt);
+        }
     }
 }

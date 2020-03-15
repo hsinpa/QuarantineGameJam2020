@@ -15,7 +15,8 @@ MonoBehaviour:
   _id: 1
   _name: First Disease
   _description: 
-  infectRate: 0.1
-  deathRate: 0.05
+  infectRate: 0.3
+  deathRate: 0.1
   panicRate: 0.1
+  explosionRate: 0.2
   errorRange: 0.05

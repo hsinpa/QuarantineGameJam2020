@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Utility;
 
 namespace JAM.Village
 {
@@ -24,6 +25,7 @@ namespace JAM.Village
 
         public int health_population;
         public int infect_population;
+        public float infectRatio => infect_population / (float) health_population;
 
         private OnReachDestiny reachCallback;
 
@@ -45,6 +47,8 @@ namespace JAM.Village
         }
 
         public void ProceedToNextState() {
+            CaculateInfectPerTurn();
+
             timeSpent++;
 
             //Make route look messy
@@ -63,7 +67,18 @@ namespace JAM.Village
             }
         }
 
+        private void CaculateInfectPerTurn() {
+            if (possibleDisease == null) return;
 
+            //Calculate death
+            int deathCount = Mathf.RoundToInt(infect_population * possibleDisease.GetRndDeathRate());
+            this.infect_population -= deathCount;
+
+            int newInfectPatient = InfectionMethod.CalculateInfectPeople(infectRatio, infect_population, possibleDisease.GetRndInfectRate());
+
+            this.health_population -= newInfectPatient;
+            this.infect_population += newInfectPatient;
+        }
 
         private void CheckReactDestination() {
             if (timeSpent >= timecost)
