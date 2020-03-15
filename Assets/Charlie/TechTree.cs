@@ -13,7 +13,7 @@ public class TechTree
 
     public void addTech(Tech t)
     {
-        if (!allTechs.Contains(t))
+        //if (!allTechs.Contains(t))
             allTechs.Add(t);
     }
 
@@ -37,7 +37,6 @@ public class TechTree
                 if (tech == null || !tech.isComplete)
                     return false;
             }
-
         }
         return false;
     }

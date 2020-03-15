@@ -1,10 +1,15 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class Tech
+public class Tech:MonoBehaviour
 {
+    //UI
+    public string imagePath;
+    //stats
     public int id;
     public bool isComplete;
-    public string name;
+    public string techName;
     public int progress;
     public int baseCost;
     public int baseTurnToResearch;
@@ -19,12 +24,13 @@ public class Tech
     public bool isMobileHospital;
     public bool isCure;
 
-    public Tech(int id,string nm,int cost, List<int> dep)
+    public Tech(int id,string nm,int cost, List<int> dep, string imgPath)
     {
         this.id = id;
-        name = nm;
+        techName = nm;
         baseCost = cost;
         dependancy = dep;
+        imagePath = imgPath;
 
         isComplete = false;
         progress = 0;

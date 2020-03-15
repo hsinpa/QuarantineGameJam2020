@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     public static SkillJsonBase skillJsonBase;
     private int turn_count = 1;
 
+    public TechModel techModel;
+    public TechViewPresenter techViewPresenter;
+
     private void Awake()
     {
         skillJsonBase = JsonUtility.FromJson<SkillJsonBase>(skillStatJson.text);
