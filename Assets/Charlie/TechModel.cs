@@ -1,17 +1,22 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TechModel : MonoBehaviour
 {
+    public int GLOBAL_RESEARCHPOWER = 5;
     public Tech currentTech;
     public TechTree techTree;
+    //public UnityAction<Tech> OnTechComplete;
+    public TechCompleteEvent OnTechCompleteEvent;
 
     public void Init()
     {
         currentTech = null;
         techTree = new TechTree();
+        OnTechCompleteEvent = new TechCompleteEvent();
         //add techs
-        
+
         Tech superMask = new Tech(1, "Super Mask", 30, null, "");
         superMask.SetEffect(0.8f, 0, 0, 0, 0, false, false, 0);
         techTree.addTech(superMask);
@@ -39,8 +44,6 @@ public class TechModel : MonoBehaviour
         Tech theCure = new Tech(7, "The cure", 100, null, "");
         theCure.SetEffect(0, 0, -1, 0, 0, false, true, 0);
         techTree.addTech(theCure);
-
-        Debug.LogError(techTree.allTechs.Count);
     }
 
     public void SetCurrentTech(Tech t)
@@ -48,22 +51,27 @@ public class TechModel : MonoBehaviour
         currentTech = t;
     }
 
-    public void AdvanceTech(Tech t, int p)
+    public void AdvanceTech(Tech t)
     {
-        t.progress += p;
+        t.progress += GLOBAL_RESEARCHPOWER;
     }
 
-    public void AdvanceCurrentTech(int p)
+    public void AdvanceCurrentTech()
     {
-        currentTech.progress = +p;
+        if (currentTech.progress < currentTech.baseCost)
+            currentTech.progress += GLOBAL_RESEARCHPOWER;
     }
 
     public void CheckProgress()
     {
-        if (currentTech.progress > currentTech.baseCost)
+        if (currentTech.progress >= currentTech.baseCost)
+        {
             currentTech.isComplete = true;
 
-        currentTech = null;
+            OnTechCompleteEvent.Invoke(currentTech);
+
+            currentTech = null;
+        }
     }
 
     public void CalculateResearchPower()

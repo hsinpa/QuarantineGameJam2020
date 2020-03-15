@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Tech:MonoBehaviour
+public class Tech
 {
     //UI
     public string imagePath;
