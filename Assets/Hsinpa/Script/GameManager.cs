@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using JAM.Village;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +24,14 @@ public class GameManager : MonoBehaviour
 
     public TechModel techModel;
     public TechViewPresenter techViewPresenter;
+
+    public int investigationPower {
+        get {
+            int baseValue = 1;
+            int universityPlus = villageManager.villages.Count(x => x.facility == StatFlag.Facility.University && !x.isVillageDestroy);
+            return baseValue + universityPlus;
+        }
+    }
 
     private void Awake()
     {
@@ -84,7 +93,7 @@ public class GameManager : MonoBehaviour
         string displayInfo = "Kingdom : <color=red>{1}</color> / <color=green>{0}</color>\nDead Population : {2}\nRegime Decline Rate : {3}%";
 
         displayInfo = string.Format(displayInfo, villageManager.wholePopulation, villageManager.wholeInfectPopulation, villageManager.wholedeadPopulation, 
-                                    System.Math.Round(villageManager.wholedeadPopulation / (float)villageManager.initialPopulation, 2) * 100);
+                                    System.Math.Round((villageManager.wholedeadPopulation) / (float)villageManager.initialPopulation, 2) * 100);
 
         overallUIView.headerUIView.infoText.text = displayInfo;
     }

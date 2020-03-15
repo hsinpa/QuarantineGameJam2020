@@ -8,6 +8,8 @@ public class SpritePackerSO : ScriptableObject
     [SerializeField]
     private List<Sprite> sprites = new List<Sprite>();
 
+
+
     private System.Random random = new System.Random();
 
     public Sprite FindSpriteByName(string name) {
@@ -16,9 +18,10 @@ public class SpritePackerSO : ScriptableObject
 
     public Sprite FindSpriteByRandom()
     {
-        int index = random.Next(0, sprites.Count);
+        var filterSprites = sprites.FindAll(x => x.name.IndexOf("people") >= 0);
+        int index = random.Next(0, filterSprites.Count);
         if (index < 0) return null;
 
-        return sprites[index];
+        return filterSprites[index];
     }
 }

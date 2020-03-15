@@ -49,6 +49,10 @@ namespace JAM.Village
         public void ProceedToNextState() {
             CaculateInfectPerTurn();
 
+            //If destination is finished
+            if (destination.isVillageDestroy)
+                destination = originate;
+
             timeSpent++;
 
             //Make route look messy

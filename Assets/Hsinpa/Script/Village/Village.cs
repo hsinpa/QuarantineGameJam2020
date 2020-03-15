@@ -18,6 +18,9 @@ namespace JAM.Village
         [SerializeField]
         private DiseaseSO defaultDiseases;
 
+        [SerializeField]
+        private SpriteRenderer villageHealthSprite;
+
         [SerializeField, Range(0, 0.1f)]
         private float travalerRate = 0.05f;
 
@@ -32,9 +35,10 @@ namespace JAM.Village
         private int _deadPopulation;
         public int deadPopulation => _deadPopulation;
 
+        public bool isVillageDestroy = false;
 
         public int totalPopulation => _infectPopulation + _healthpopulation;
-        public float infectRate => _infectPopulation / (float)_healthpopulation;
+        public float infectRate => _infectPopulation / (float)totalPopulation;
         public bool isDiseaseExist => diseases.Count > 0;
 
         private VillageManager _villageManager;
@@ -56,8 +60,13 @@ namespace JAM.Village
         }
 
         public void ProceedToNextState() {
+            if (isVillageDestroy) return;
+
             EffectFromInfect();
             MoveToConnectVillage();
+
+            SetVillageHealthSprite();
+            SetVillageStatus();
         }
 
         public void OnTravelerArrive(Traveler traveler) {
@@ -76,6 +85,7 @@ namespace JAM.Village
             AffectPopulationWithInfectNum( InfectionMethod.CalculateInfectPeople(infectRate, _infectPopulation, defaultDiseases.GetRndInfectRate()));
 
             //Calculate cured
+
         }
 
         private void MoveToConnectVillage()
@@ -91,7 +101,7 @@ namespace JAM.Village
             foreach (var c_village in connectedVillages) {
                 float travelerSpawnRate = 0.35f;
                 bool spawnTraveler = Random.Range(0, 1f) < travelerSpawnRate;
-                if (!spawnTraveler) continue;
+                if (!spawnTraveler || c_village.isVillageDestroy) continue;
 
                 int totalLeavePopulation = Mathf.RoundToInt(totalPopulation * travalerRate);
                 int infectLeavePopulation = Mathf.RoundToInt(totalLeavePopulation * Mathf.Clamp(infectRate + Random.Range(-0.05f, 0), 0, 1 ));
@@ -106,7 +116,23 @@ namespace JAM.Village
         private void AffectPopulationWithInfectNum(int newInfectNum) {
             _healthpopulation -= newInfectNum;
             _infectPopulation += newInfectNum;
+        }
 
+        private void SetVillageHealthSprite() {
+            int spriteID = Mathf.FloorToInt( infectRate * 7);
+
+            Sprite sprite = spritePacker.FindSpriteByName(StatFlag.Other.VillageHealthSprite + spriteID);
+             
+            if (spriteID >= 7)
+                sprite = spritePacker.FindSpriteByName(StatFlag.Other.VillageHealthSpriteDead);
+
+            if (sprite != null && villageHealthSprite != null)
+                villageHealthSprite.sprite = sprite;
+        }
+
+        private void SetVillageStatus() {
+            if (infectRate >= 1)
+                isVillageDestroy = true;
         }
 
         public void ActDeathByTraveler(int travelerDeath) {
@@ -119,6 +145,9 @@ namespace JAM.Village
             _healthpopulation = Random.Range(6000,10000);
             _infectPopulation = 0;
             _deadPopulation = 0;
+            isVillageDestroy = false;
+
+            SetVillageHealthSprite();
         }
     }
 }

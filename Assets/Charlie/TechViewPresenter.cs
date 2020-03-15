@@ -33,7 +33,7 @@ public class TechViewPresenter : MonoBehaviour
 
     void PopulateGrid()
     {
-        Debug.LogError(_techModel.techTree.allTechs.Count);
+       // Debug.LogError(_techModel.techTree.allTechs.Count);
         foreach (var t in _techModel.techTree.allTechs)
         {
             var go = Instantiate(TechIconPrefab, GridObject.transform, false);
