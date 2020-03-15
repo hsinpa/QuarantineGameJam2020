@@ -10,6 +10,7 @@ public class Tech
     public int id;
     public bool isComplete;
     public string techName;
+    public string descriptionString;
     public int progress;
     public int baseCost;
     public int baseTurnToResearch;
@@ -24,13 +25,14 @@ public class Tech
     public bool isMobileHospital;
     public bool isCure;
 
-    public Tech(int id,string nm,int cost, List<int> dep, string imgPath)
+    public Tech(int id,string nm,int cost, List<int> dep, string imgPath, string des)
     {
         this.id = id;
         techName = nm;
         baseCost = cost;
         dependancy = dep;
         imagePath = imgPath;
+        descriptionString = des;
 
         isComplete = false;
         progress = 0;
