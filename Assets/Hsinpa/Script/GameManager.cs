@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
         skillJsonBase = JsonUtility.FromJson<SkillJsonBase>(skillStatJson.text);
 
         villageInputCtrl = new VillageInputCtrl(Camera.main);

@@ -3,12 +3,12 @@
 		{
 			"name" : "Quarantine",
 			"cost" : "1AP",
-			"effect" : "Decrease the percentage patient direct contact with healthy people.\nNo Traveler will be send next turn."
+			"effect" : "1.Decrease the infest rate.\n2.No Traveler allow next turn."
 		},
 		{
 			"name" : "Develop Tech",
 			"cost" : "2AP",
-			"effect" : ""
+			"effect" : "Push the tech development speed for 1 turn ahead"
 		},
 		{
 			"name" : "Improve lab quality",

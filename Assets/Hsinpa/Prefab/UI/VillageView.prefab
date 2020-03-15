@@ -843,7 +843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.5455855}
-  m_AnchoredPosition: {x: -1.2399902, y: 0.40000868}
+  m_AnchoredPosition: {x: -1.2399902, y: 0.40000916}
   m_SizeDelta: {x: -15.3, y: 0.79999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7019602304037913851
@@ -1122,6 +1122,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tech
       objectReference: {fileID: 0}
+    - target: {fileID: 6829735108811558310, guid: f8ab54c90a3a2814a978a9aaf3861fba,
+        type: 3}
+      propertyPath: skill_id
+      value: Develop Tech
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ab54c90a3a2814a978a9aaf3861fba, type: 3}
 --- !u!224 &1361211576092607305 stripped
@@ -1258,6 +1263,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hospital
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829735108811558310, guid: f8ab54c90a3a2814a978a9aaf3861fba,
+        type: 3}
+      propertyPath: skill_id
+      value: Cure
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ab54c90a3a2814a978a9aaf3861fba, type: 3}
@@ -1396,6 +1406,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quarantine
       objectReference: {fileID: 0}
+    - target: {fileID: 6829735108811558310, guid: f8ab54c90a3a2814a978a9aaf3861fba,
+        type: 3}
+      propertyPath: skill_id
+      value: Quarantine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ab54c90a3a2814a978a9aaf3861fba, type: 3}
 --- !u!224 &7019792662311296017 stripped
@@ -1532,6 +1547,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lab
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829735108811558310, guid: f8ab54c90a3a2814a978a9aaf3861fba,
+        type: 3}
+      propertyPath: skill_id
+      value: Improve lab quality
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ab54c90a3a2814a978a9aaf3861fba, type: 3}
