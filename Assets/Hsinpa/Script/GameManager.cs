@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
 
         UpdateHeaderUIView();
         //villageManager.ProceedToNextState();
+        techModel._GameManager = this;
     }
 
     public void NextTurn() {

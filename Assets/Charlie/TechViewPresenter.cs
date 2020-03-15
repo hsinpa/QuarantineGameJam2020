@@ -9,6 +9,7 @@ public class TechViewPresenter : MonoBehaviour
     public GameObject CurrentTechRoot;
     public Image CurrentTechIcon;
     public Text CurrentTechName;
+    public Text CurrentTechDescription;
     public Image CurrentTechProgress;
     public GameObject NoResearchObject;
     //Grid
@@ -65,9 +66,10 @@ public class TechViewPresenter : MonoBehaviour
         {
             CurrentTechRoot.SetActive(true);
             NoResearchObject.SetActive(false);
-            this._techModel.SetCurrentTech(tech);
-            this.CurrentTechProgress.fillAmount = (float)tech.progress / (float)tech.baseCost;
-            this.CurrentTechName.text = string.Format("{0} {1:P0}", tech.techName, ((float)tech.progress / (float)tech.baseCost));
+            _techModel.SetCurrentTech(tech);
+            CurrentTechProgress.fillAmount = (float)tech.progress / (float)tech.baseCost;
+            CurrentTechName.text = string.Format("{0} {1:P0}", tech.techName, ((float)tech.progress / (float)tech.baseCost));
+            CurrentTechDescription.text = tech.descriptionString;
         }
         //this.CurrentTechIcon.sprite = Resources.Load<Sprite>(tech.imagePath);
     }
@@ -84,14 +86,16 @@ public class TechViewPresenter : MonoBehaviour
         var tech = _techModel.currentTech;
         if (tech != null)
         {
-            this.CurrentTechProgress.fillAmount = (float)tech.progress / (float)tech.baseCost;
-            this.CurrentTechName.text = string.Format("{0} {1:P}", tech.techName, ((float)tech.progress / (float)tech.baseCost));
+            CurrentTechProgress.fillAmount = (float)tech.progress / (float)tech.baseCost;
+            CurrentTechName.text = string.Format("{0} {1:P}", tech.techName, ((float)tech.progress / (float)tech.baseCost));
             //this.CurrentTechIcon.sprite = Resources.Load<Sprite>(tech.imagePath);
+            CurrentTechDescription.text = tech.descriptionString;
         }
         else
         {
             CurrentTechRoot.SetActive(false);
             NoResearchObject.SetActive(true);
+            CurrentTechDescription.text = "No active research underway";
         }
 
         for (int i = 0; i < _techModel.techTree.allTechs.Count; i++)
@@ -120,7 +124,7 @@ public class TechViewPresenter : MonoBehaviour
         techButtons = new List<Button>();
         _gm = FindObjectOfType<GameManager>();
         _gm.techViewPresenter = this;
-        this._techModel = _gm.techModel;
+        _techModel = _gm.techModel;
         CurrentTechRoot.SetActive(false);
         NoResearchObject.SetActive(true);
 
