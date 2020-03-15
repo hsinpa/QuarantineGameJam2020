@@ -59,7 +59,7 @@ public class TechModel : MonoBehaviour
 
     public void AdvanceCurrentTech()
     {
-        if (currentTech == null) return;
+        if (currentTech == null) return;//TODO:warning window?
 
         if (currentTech.progress < currentTech.baseCost)
             currentTech.progress += _GameManager.investigationPower;
@@ -67,6 +67,8 @@ public class TechModel : MonoBehaviour
 
     public void CheckProgress()
     {
+        if (currentTech == null) return;//TODO:warning window?
+
         if (currentTech.progress >= currentTech.baseCost)
         {
             currentTech.isComplete = true;
