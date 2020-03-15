@@ -132,6 +132,7 @@ public class TechViewPresenter : MonoBehaviour
         PopulateGrid();
 
         _techModel.OnTechCompleteEvent.AddListener (x => Debug.LogError("Research Complete="+x.techName));
+        this.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
