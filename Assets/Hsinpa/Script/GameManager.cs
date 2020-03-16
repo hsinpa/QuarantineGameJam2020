@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public TechModel techModel;
     public TechViewPresenter techViewPresenter;
     public AudioManager audioManager;
+    public RectTransform APDisplay;
+    public GameObject APSpriteObject;
 
     private ActionHandler actionHandler;
 
@@ -110,9 +112,19 @@ public class GameManager : MonoBehaviour
 
     private void UpdateHeaderUIView()
     {
-        string statsInfo = "Turn {0}\nAP : {1}";
+        //string statsInfo = "Turn {0}\nAP : {1}";
 
-        statsInfo = string.Format(statsInfo, _turn_count, actionHandler.currentAP);
+        //statsInfo = string.Format(statsInfo, _turn_count, actionHandler.currentAP);
+
+        string statsInfo = "Turn {0}\nAP :";
+
+        statsInfo = string.Format(statsInfo, _turn_count);
+        
+        for (int i = 0; i < APDisplay.transform.childCount; i++)
+            Destroy(APDisplay.transform.GetChild(i).gameObject);
+        
+        for (int i = 0; i < actionHandler.currentAP; i++)
+            Instantiate(APSpriteObject, APDisplay, false);
 
         overallUIView.headerUIView.statText.text = statsInfo;
 
