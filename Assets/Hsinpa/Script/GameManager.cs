@@ -116,9 +116,9 @@ public class GameManager : MonoBehaviour
 
         //statsInfo = string.Format(statsInfo, _turn_count, actionHandler.currentAP);
 
-        string statsInfo = "Turn {0}, Research Power: {1}\nAP :";
+        string statsInfo = "Turn {0}\nAP :";
 
-        statsInfo = string.Format(statsInfo, _turn_count, investigationPower);
+        statsInfo = string.Format(statsInfo, _turn_count);
         
         for (int i = 0; i < APDisplay.transform.childCount; i++)
             Destroy(APDisplay.transform.GetChild(i).gameObject);
@@ -128,10 +128,18 @@ public class GameManager : MonoBehaviour
 
         overallUIView.headerUIView.statText.text = statsInfo;
 
-        string displayInfo = "Kingdom : <color=red>{1}</color> / <color=green>{0}</color>\nDead Population : {2}\nRegime Decline Rate : {3}%";
+        string displayInfo = "Kingdom : <color=red>{1}</color> / <color=green>{0}</color>\nDead Population : {2}\nRegime Decline Rate : {3}%\nResearch Power : {4}";
 
-        displayInfo = string.Format(displayInfo, villageManager.wholePopulation, villageManager.wholeInfectPopulation, villageManager.wholedeadPopulation, 
-                                    System.Math.Round((villageManager.wholedeadPopulation) / (float)villageManager.initialPopulation, 2) * 100);
+        displayInfo = string.Format(displayInfo, villageManager.wholePopulation, villageManager.wholeInfectPopulation, villageManager.wholedeadPopulation,
+                                    System.Math.Round((villageManager.wholedeadPopulation) / (float)villageManager.initialPopulation, 2) * 100, investigationPower);
+        if (techModel.currentTech != null)
+        {
+            displayInfo = displayInfo + "\nOngoing Research:" + techModel.currentTech.techName;
+        }
+        else
+        {
+            displayInfo = displayInfo + "\nOngoing Research:" + "None";
+        }
 
         overallUIView.headerUIView.infoText.text = displayInfo;
     }
