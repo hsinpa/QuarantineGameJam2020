@@ -41,10 +41,9 @@ public class TechViewPresenter : MonoBehaviour
             string spriteID = "Icon_Tech_0" + t.id;
             var go = Instantiate(TechIconPrefab, GridObject.transform, false);
 
-            var ic = go.GetComponent<Image>();
+            var ic = go.transform.Find("Icon").GetComponent<Image>();
             ic.sprite = spritePacker.FindSpriteByName(spriteID);
             
-
             var button = go.GetComponent<Button>();
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(()=>OnTechClick(t.id));

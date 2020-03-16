@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     private void UpdateHeaderUIView()
     {
-        string statsInfo = "Turn {0}, AP : {1}";
+        string statsInfo = "Turn {0}\nAP : {1}";
 
         statsInfo = string.Format(statsInfo, _turn_count, actionHandler.currentAP);
 
