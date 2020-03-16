@@ -26,27 +26,27 @@ public class TechModel : MonoBehaviour
         superSickroom.SetEffect(0, 0.8f, 0, 0, 0, false, false, 0);
         techTree.addTech(superSickroom);
 
-        Tech positioningChips = new Tech(3, "E-Assistant", 30, null, "", "Reduce basic reproduction number by 1 ");
+        Tech positioningChips = new Tech(3, "E-Assistant", 30, null, "", "Basic Reproduction number -1");
         positioningChips.SetEffect(0, 0, -1, 0, 0, false, false, 0);
         techTree.addTech(positioningChips);
 
-        Tech electronicAssistant = new Tech(4, "Video Call", 30, null, "", "Reduce travelers by 50%");
+        Tech electronicAssistant = new Tech(4, "Video Call", 30, null, "", "Traveler travels 50% less");
         electronicAssistant.SetEffect(0, 0, 0, 0.5f, 0, false, false, 0);
         techTree.addTech(electronicAssistant);
 
-        Tech performanceImprove = new Tech(5, "Performance Improve", 30, null, "", "AP +1 per turn");
+        Tech performanceImprove = new Tech(5, "Performance Improve", 30, null, "", "AP +1");
         performanceImprove.SetEffect(0, 0, -1, 0, 0, false, false, 1);
         techTree.addTech(performanceImprove);
 
-        Tech autoTestGate = new Tech(6, "Detection Gate", 30, null, "", "80% to detect infected traveler");
+        Tech autoTestGate = new Tech(6, "Detection Gate", 30, null, "", "80% detect and block infected travelers");
         autoTestGate.SetEffect(0, 0, 0, 0, 0.8f, false, false, 0);
         techTree.addTech(autoTestGate);
 
-        Tech mobileHospital = new Tech(7, "Mobile Hospital", 30, null, "", "Install mobile hospital to all village");
+        Tech mobileHospital = new Tech(7, "Mobile Hospital", 30, null, "", "Can use Cure as an option on all villages");
         mobileHospital.SetEffect(0, 0, 0, 0, 0, true, false, 0);
         techTree.addTech(mobileHospital);
 
-        Tech theCure = new Tech(8, "The cure", 100, null, "", "Research to win");
+        Tech theCure = new Tech(8, "The cure", 100, null, "", "You win the game scenario");
         theCure.SetEffect(0, 0, -1, 0, 0, false, true, 0);
         techTree.addTech(theCure);
     }
