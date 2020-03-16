@@ -1,24 +1,24 @@
 {
-	"town_skills" : [
-		{
-			"name" : "Quarantine",
-			"cost" : "1AP",
-			"effect" : "1.Decrease the infest rate.\n2.No Traveler allow next turn."
-		},
-		{
-			"name" : "Develop Tech",
-			"cost" : "2AP",
-			"effect" : "Push the tech development speed for 1 turn ahead"
-		},
-		{
-			"name" : "Improve lab quality",
-			"cost" : "1AP",
-			"effect" : "Increase 1 AP eternally"
-		},
-		{
-			"name" : "Cure",
-			"cost" : "1AP",
-			"effect" : "Cure 20%~30% of infect population in this village"
-		}
-	]
+    "town_skills" : [
+        {
+            "name" : "Quarantine",
+            "cost" : "1AP",
+            "effect" : "1.Decrease the infest rate.\n2.No Traveler is allowed to leave this village next turn."
+        },
+        {
+            "name" : "Develop Tech",
+            "cost" : "2AP",
+            "effect" : "Use Research Power to develop your techs for progress."
+        },
+        {
+            "name" : "Improve Lab Quality",
+            "cost" : "1AP",
+            "effect" : "Increase 1 Research Point permanently."
+        },
+        {
+            "name" : "Cure",
+            "cost" : "1AP",
+            "effect" : "Cure 20%~30% of infected population in this village"
+        }
+    ]
 }
