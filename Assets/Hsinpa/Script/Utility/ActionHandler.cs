@@ -67,17 +67,18 @@ public class ActionHandler
 
             case StatFlag.ActionStat.Cure:
             {
-                    ActionDict = UtilityMethod.EditDictionary<float>(ActionDict, combineID, gameManager.turn_count);
+                ActionDict = UtilityMethod.EditDictionary<float>(ActionDict, combineID, gameManager.turn_count);
 
-                    Village village = villageManager.villages.Find(x => x.ID == village_id);
-                    if (village != null)
-                        village.Cure();
+                Village village = villageManager.villages.Find(x => x.ID == village_id);
+                if (village != null)
+                    village.Cure();
             }
             break;
 
             case StatFlag.ActionStat.Investigate:
             {
-                    ActionDict = UtilityMethod.EditDictionary<float>(ActionDict, combineID, 1);
+                ActionDict = UtilityMethod.EditDictionary<float>(ActionDict, combineID, 1);
+                gameManager.techViewPresenter.OnNextTurn();
             }
             break;
 
@@ -144,6 +145,16 @@ public class ActionHandler
         infectedDetectionRate = 0;
         APMOD = 0;
         isMobileHospital = false;
+
+        if (villageManager.villages != null) {
+            foreach (var village in villageManager.villages)
+            {
+                string quarantineID = CombineID(StatFlag.ActionStat.Quarantine, village.ID);
+
+                ActionDict = UtilityMethod.EditDictionary<float>(ActionDict, quarantineID, 0);
+            }
+        }
+
     }
 
     public struct ActionStat {
