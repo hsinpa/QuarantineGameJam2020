@@ -116,7 +116,8 @@ public class ActionHandler
                 infectRate += tech.infectRate;
                 deathRate += tech.deathRate;
                 spreadRate += tech.spreadRate;
-                ResearchPowerOffset += tech.researchPowerMod;
+                if(!Mathf.Approximately(tech.travelerRateModifier, 0f))
+                travelerRate = tech.travelerRateModifier;
                 infectedDetectionRate += tech.infectedDetectionRate;
                 APMOD += tech.APMOD;
                 //Debug.LogError(tech.researchPowerMod);

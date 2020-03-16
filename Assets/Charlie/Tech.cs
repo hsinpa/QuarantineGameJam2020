@@ -19,7 +19,7 @@ public class Tech
     public  float infectRate;
     public  float deathRate;
     public float spreadRate;
-    public  float researchPowerMod;
+    public  float travelerRateModifier;
     public  float infectedDetectionRate;
     public  int APMOD;
     public  bool isMobileHospital;
@@ -43,7 +43,7 @@ public class Tech
         infectRate = ir;
         deathRate = dr;
         spreadRate = sr;
-        researchPowerMod = rpm;
+        travelerRateModifier = rpm;
         infectedDetectionRate = ifr;
         isMobileHospital = isHospital;
         this.isCure = isCure;

@@ -30,8 +30,8 @@ public class TechModel : MonoBehaviour
         positioningChips.SetEffect(0, 0, -1, 0, 0, false, false, 0);
         techTree.addTech(positioningChips);
 
-        Tech electronicAssistant = new Tech(4, "Electronic Assistant", 30, null, "", "Increase Research Power by 1");
-        electronicAssistant.SetEffect(0, 0, 0, 1.0f, 0, false, false, 0);
+        Tech electronicAssistant = new Tech(4, "Video Call", 30, null, "", "Reduce travelers by 50%");
+        electronicAssistant.SetEffect(0, 0, 0, 0.5f, 0, false, false, 0);
         techTree.addTech(electronicAssistant);
 
         Tech performanceImprove = new Tech(5, "Performance Improve", 30, null, "", "AP +1 per turn");
