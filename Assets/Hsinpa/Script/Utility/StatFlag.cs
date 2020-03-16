@@ -32,6 +32,11 @@ public class StatFlag
     public class Other {
         public const string VillageHealthSprite = "DeathMeter";
         public const string VillageHealthSpriteDead = "DeathMeterEnd";
+    }
 
+    public class Audio {
+        public const string ButtonSound = "ButtonSound";
+        public const string PanelCloseOpenSound = "PanelCloseOpenSound";
+        public const string Tech_Done = "Tech_Done";
     }
 }

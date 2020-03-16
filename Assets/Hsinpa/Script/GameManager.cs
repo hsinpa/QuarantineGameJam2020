@@ -108,9 +108,9 @@ public class GameManager : MonoBehaviour
 
     private void UpdateHeaderUIView()
     {
-        string statsInfo = "Turn {0}";
+        string statsInfo = "Turn {0}, AP : {1}";
 
-        statsInfo = string.Format(statsInfo, _turn_count);
+        statsInfo = string.Format(statsInfo, _turn_count, actionHandler.currentAP);
 
         overallUIView.headerUIView.statText.text = statsInfo;
 
@@ -127,6 +127,8 @@ public class GameManager : MonoBehaviour
     }
 
     private void OnTechComplete(Tech tech) {
+        SimpleAudioScript.instance.PlayAudio(StatFlag.Audio.Tech_Done);
+
         if (tech.isCure)
             gameOverTipsView.SetTitle("Game Completed!");
 

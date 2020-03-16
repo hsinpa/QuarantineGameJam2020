@@ -12,6 +12,9 @@ public class TechViewPresenter : MonoBehaviour
     public Text CurrentTechDescription;
     public Image CurrentTechProgress;
     public GameObject NoResearchObject;
+
+    public SpritePackerSO spritePacker;
+
     //Grid
     public GameObject GridObject;
     
@@ -35,10 +38,12 @@ public class TechViewPresenter : MonoBehaviour
     {
         foreach (var t in _techModel.techTree.allTechs)
         {
+            string spriteID = "Icon_Tech_0" + t.id;
             var go = Instantiate(TechIconPrefab, GridObject.transform, false);
 
             var ic = go.GetComponent<Image>();
-            //ic.sprite = Resources.Load<Sprite>(t.imagePath);
+            ic.sprite = spritePacker.FindSpriteByName(spriteID);
+            
 
             var button = go.GetComponent<Button>();
             button.onClick.RemoveAllListeners();
@@ -71,7 +76,9 @@ public class TechViewPresenter : MonoBehaviour
             CurrentTechName.text = string.Format("{0} {1:P0}", tech.techName, ((float)tech.progress / (float)tech.baseCost));
             CurrentTechDescription.text = tech.descriptionString;
         }
-        //this.CurrentTechIcon.sprite = Resources.Load<Sprite>(tech.imagePath);
+
+        string spriteID = "Banner_Tech_0" + id;
+        this.CurrentTechIcon.sprite = spritePacker.FindSpriteByName(spriteID);
     }
 
     public void OnNextTurn()

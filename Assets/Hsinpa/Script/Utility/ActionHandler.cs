@@ -46,6 +46,10 @@ public class ActionHandler
         if (action_id == StatFlag.ActionStat.Cure)
             return gameManager.turn_count - GetValue(action_id, village_id) > 1 && currentAP >= pickAction.apCost;
 
+        if (action_id == StatFlag.ActionStat.Quarantine)
+            return GetValue(action_id, village_id) <= 0;
+
+
         return currentAP >= pickAction.apCost;
     }
 

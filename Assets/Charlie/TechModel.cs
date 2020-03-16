@@ -18,31 +18,35 @@ public class TechModel : MonoBehaviour
         OnTechCompleteEvent = new TechCompleteEvent();
         //add techs
 
-        Tech superMask = new Tech(1, "Super Mask", 30, null, "", "SuperMask Description placeholder");
+        Tech superMask = new Tech(1, "Super Mask", 30, null, "", "Decrease Infect Rate by 20%");
         superMask.SetEffect(0.8f, 0, 0, 0, 0, false, false, 0);
         techTree.addTech(superMask);
 
-        Tech superSickroom = new Tech(2, "Upgraded sickroom", 30, null, "", "superSickroom Description placeholder");
+        Tech superSickroom = new Tech(2, "Upgraded sickroom", 30, null, "", "Decrease Death Rate by 20%");
         superSickroom.SetEffect(0, 0.8f, 0, 0, 0, false, false, 0);
         techTree.addTech(superSickroom);
 
-        Tech positioningChips = new Tech(3, "Positioning Chips", 30, null, "", "positioningChips Description placeholder");
+        Tech positioningChips = new Tech(3, "Positioning Chips", 30, null, "", "Basic reproduction number -1");
         positioningChips.SetEffect(0, 0, -1, 0, 0, false, false, 0);
         techTree.addTech(positioningChips);
 
-        Tech electronicAssistant = new Tech(4, "Electronic Assistant", 30, null, "", "electronicAssistant Description placeholder");
+        Tech electronicAssistant = new Tech(4, "Electronic Assistant", 30, null, "", "Allow less traveler to leave village");
         electronicAssistant.SetEffect(0, 0, 0, 0.5f, 0, false, false, 0);
         techTree.addTech(electronicAssistant);
 
-        Tech autoTestGate = new Tech(5, "Automatic Infection Detection Gate", 30, null, "", "autoTestGate Description placeholder");
+        Tech performanceImprove = new Tech(5, "Performance Improve", 30, null, "", "AP +1 per turn");
+        performanceImprove.SetEffect(0, 0, -1, 0, 0, false, false, 1);
+        techTree.addTech(performanceImprove);
+
+        Tech autoTestGate = new Tech(6, "Detection Gate", 30, null, "", "80% to detect infected traveler");
         autoTestGate.SetEffect(0, 0, 0, 0, 0.8f, false, false, 0);
         techTree.addTech(autoTestGate);
 
-        Tech mobileHospital = new Tech(6, "Mobile Hospital", 30, null, "", "mobileHospital Description placeholder");
+        Tech mobileHospital = new Tech(7, "Mobile Hospital", 30, null, "", "Install mobile hospital to all village");
         mobileHospital.SetEffect(0, 0, 0, 0, 0, true, false, 0);
         techTree.addTech(mobileHospital);
 
-        Tech theCure = new Tech(7, "The cure", 100, null, "", "theCure Description placeholder");
+        Tech theCure = new Tech(8, "The cure", 100, null, "", "The Winning condition");
         theCure.SetEffect(0, 0, -1, 0, 0, false, true, 0);
         techTree.addTech(theCure);
     }

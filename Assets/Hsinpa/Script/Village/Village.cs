@@ -21,6 +21,15 @@ namespace JAM.Village
         [SerializeField]
         private SpriteRenderer villageHealthSprite;
 
+        [SerializeField]
+        private SpriteRenderer hospitalIcon;
+
+        [SerializeField]
+        private SpriteRenderer universityIcon;
+
+        [SerializeField]
+        private SpriteRenderer quarantineIcon;
+
         [SerializeField, Range(0, 0.1f)]
         private float travalerRate = 0.05f;
 
@@ -50,6 +59,7 @@ namespace JAM.Village
             diseases = new List<DiseaseSO>();
 
             Reset();
+            SetVillageStatusIcon();
         }
 
         public void SetDisease() {
@@ -69,6 +79,8 @@ namespace JAM.Village
 
             SetVillageHealthSprite();
             SetVillageStatus();
+
+            SetVillageStatusIcon();
         }
 
         public void OnTravelerArrive(Traveler traveler) {
@@ -126,7 +138,6 @@ namespace JAM.Village
                 int totalLeavePopulation = Mathf.RoundToInt(totalPopulation * travalerRate);
                 int infectLeavePopulation = Mathf.RoundToInt(totalLeavePopulation * infectRate);
 
-                Debug.Log(ActionHandler.infectedDetectionRate);
                 //Tech Effect
                 if (ActionHandler.infectedDetectionRate > rdnValue && infectLeavePopulation > 0)
                     return;
@@ -158,6 +169,14 @@ namespace JAM.Village
         private void SetVillageStatus() {
             if (infectRate >= 1)
                 isVillageDestroy = true;
+        }
+
+        private void SetVillageStatusIcon()
+        {
+            hospitalIcon.enabled = (facility == StatFlag.Facility.Hospital);
+            universityIcon.enabled = (facility == StatFlag.Facility.University);
+
+            quarantineIcon.enabled = actionHandler.GetValue(StatFlag.ActionStat.Quarantine, ID) > 0;
         }
 
         public void ActDeathByTraveler(int travelerDeath) {

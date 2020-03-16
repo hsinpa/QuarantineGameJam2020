@@ -17,6 +17,9 @@ namespace JAM.Village
         [SerializeField]
         private SpriteRenderer spriteRenderer;
 
+        [SerializeField]
+        private SpriteRenderer infectIndicatorSprite;
+
         private Village destination;
         private Village originate;
 
@@ -26,6 +29,7 @@ namespace JAM.Village
         public int health_population;
         public int infect_population;
         public float infectRatio => infect_population / (float) health_population;
+
 
         private OnReachDestiny reachCallback;
 
@@ -44,6 +48,8 @@ namespace JAM.Village
             this.reachCallback = reachCallback;
 
             transform.position = originate.transform.position;
+
+            infectIndicatorSprite.enabled = (infect_population > 0);
         }
 
         public void ProceedToNextState() {
