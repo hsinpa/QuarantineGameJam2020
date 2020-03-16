@@ -60,32 +60,24 @@ public class ActionHandler
         string combineID = CombineID(action_id, village_id);
         switch (action_id) {
             case StatFlag.ActionStat.Quarantine:
-            {
                 ActionDict = UtilityMethod.EditDictionary<float>(ActionDict, combineID, 1);
-            }
-            break;
+                break;
 
             case StatFlag.ActionStat.Cure:
-            {
                 ActionDict = UtilityMethod.EditDictionary<float>(ActionDict, combineID, gameManager.turn_count);
 
                 Village village = villageManager.villages.Find(x => x.ID == village_id);
                 if (village != null)
                     village.Cure();
-            }
-            break;
+                break;
 
             case StatFlag.ActionStat.Investigate:
-            {
                 ActionDict = UtilityMethod.EditDictionary<float>(ActionDict, combineID, 1);
-                gameManager.techViewPresenter.OnNextTurn();
-            }
-            break;
+                gameManager.techViewPresenter.gameObject.SetActive(true);
+                break;
 
             case StatFlag.ActionStat.Lab:
-            {
                 ActionDict = UtilityMethod.EditDictionary<float>(ActionDict, combineID, GetValue(combineID) + 1);
-            }
             break;
         }
 

@@ -536,6 +536,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TechView
       objectReference: {fileID: 0}
+    - target: {fileID: 2349088469540247720, guid: b70dc4974120b114b9bc3c4747e43af1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8779146215420283652, guid: b70dc4974120b114b9bc3c4747e43af1,
         type: 3}
       propertyPath: m_LocalPosition.x

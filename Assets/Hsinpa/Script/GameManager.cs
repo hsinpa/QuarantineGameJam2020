@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         techModel._GameManager = this;
         audioManager = FindObjectOfType<AudioManager>();
 
-        techViewPresenter.gameObject.SetActive(true);
+        techViewPresenter.gameObject.SetActive(false);
     }
 
     public void NextTurn() {
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         if (villageManager != null)
             villageManager.ProceedToNextState();
 
-        techViewPresenter?.OnNextTurn();
+        //techViewPresenter?.OnNextTurn();
 
         UpdateHeaderUIView();
 

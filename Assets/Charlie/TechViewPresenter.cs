@@ -27,6 +27,7 @@ public class TechViewPresenter : MonoBehaviour
     private List<Button> techButtons;
 
     private GameObject popupObject;
+    private bool canAdvanceTech;
 
     void SetUpEvents()
     {
@@ -65,19 +66,22 @@ public class TechViewPresenter : MonoBehaviour
     void OnTechClick(int id)
     {
         var tech = _techModel.techTree.getById(id);
-
-        if (_techModel.techTree.isTechAvailable(tech))
+        if (_techModel.techTree.isTechAvailable(tech) && canAdvanceTech)
         {
             CurrentTechRoot.SetActive(true);
             NoResearchObject.SetActive(false);
             _techModel.SetCurrentTech(tech);
-            CurrentTechProgress.fillAmount = (float)tech.progress / (float)tech.baseCost;
-            CurrentTechName.text = string.Format("{0} {1:P0}", tech.techName, ((float)tech.progress / (float)tech.baseCost));
-            CurrentTechDescription.text = tech.descriptionString;
-        }
+            
+            OnNextTurn();
+            canAdvanceTech = false;
 
-        string spriteID = "Banner_Tech_0" + id;
-        this.CurrentTechIcon.sprite = spritePacker.FindSpriteByName(spriteID);
+            //CurrentTechProgress.fillAmount = (float)tech.progress / (float)tech.baseCost;
+            //CurrentTechName.text = string.Format("{0} {1:P0}", tech.techName, ((float)tech.progress / (float)tech.baseCost));
+            //CurrentTechDescription.text = tech.descriptionString;
+
+            string spriteID = "Banner_Tech_0" + id;
+            this.CurrentTechIcon.sprite = spritePacker.FindSpriteByName(spriteID);
+        }
     }
 
     public void OnNextTurn()
@@ -93,7 +97,7 @@ public class TechViewPresenter : MonoBehaviour
         if (tech != null)
         {
             CurrentTechProgress.fillAmount = (float)tech.progress / (float)tech.baseCost;
-            CurrentTechName.text = string.Format("{0} {1:P}", tech.techName, ((float)tech.progress / (float)tech.baseCost));
+            CurrentTechName.text = string.Format("{0} {1:P0}", tech.techName, ((float)tech.progress / (float)tech.baseCost));
             //this.CurrentTechIcon.sprite = Resources.Load<Sprite>(tech.imagePath);
             CurrentTechDescription.text = tech.descriptionString;
         }
@@ -124,9 +128,21 @@ public class TechViewPresenter : MonoBehaviour
         //??
     }
 
+    private void OnEnable()
+    {
+        canAdvanceTech = true;
+        Debug.LogError("blah3" + canAdvanceTech);
+    }
+
+    private void OnDisable()
+    {
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        canAdvanceTech = true;
         techButtons = new List<Button>();
         _gm = FindObjectOfType<GameManager>();
         _gm.techViewPresenter = this;
