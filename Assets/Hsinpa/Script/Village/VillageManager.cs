@@ -128,7 +128,7 @@ namespace JAM.Village {
             }
         }
 
-        private void UpdateBottomUIView() {
+        public void UpdateBottomUIView() {
             bool hasLabBt = (_onClickVillage != null && _onClickVillage.facility == StatFlag.Facility.University) && actionHandler.CheckActionValid(StatFlag.ActionStat.Lab, _onClickVillage.ID);
             overallUIView.baseButtonView.labBt.interactable = (hasLabBt);
 

@@ -32,7 +32,7 @@ public class TechViewPresenter : MonoBehaviour
     void SetUpEvents()
     {
         CloseButton.onClick.RemoveAllListeners();
-        CloseButton.onClick.AddListener(CloseView);
+        CloseButton.onClick.AddListener(OnConfirmClicked);
     }
 
     void PopulateGrid()
@@ -66,18 +66,15 @@ public class TechViewPresenter : MonoBehaviour
     void OnTechClick(int id)
     {
         var tech = _techModel.techTree.getById(id);
-        if (_techModel.techTree.isTechAvailable(tech) && canAdvanceTech)
+        if (_techModel.techTree.isTechAvailable(tech))
         {
             CurrentTechRoot.SetActive(true);
             NoResearchObject.SetActive(false);
             _techModel.SetCurrentTech(tech);
-            
-            OnNextTurn();
-            canAdvanceTech = false;
 
-            //CurrentTechProgress.fillAmount = (float)tech.progress / (float)tech.baseCost;
-            //CurrentTechName.text = string.Format("{0} {1:P0}", tech.techName, ((float)tech.progress / (float)tech.baseCost));
-            //CurrentTechDescription.text = tech.descriptionString;
+            CurrentTechProgress.fillAmount = (float)tech.progress / (float)tech.baseCost;
+            CurrentTechName.text = string.Format("{0} {1:P0}", tech.techName, ((float)tech.progress / (float)tech.baseCost));
+            CurrentTechDescription.text = tech.descriptionString;
 
             string spriteID = "Banner_Tech_0" + id;
             this.CurrentTechIcon.sprite = spritePacker.FindSpriteByName(spriteID);
@@ -86,9 +83,20 @@ public class TechViewPresenter : MonoBehaviour
 
     public void OnNextTurn()
     {
-        _techModel.AdvanceCurrentTech();
         _techModel.CheckProgress();
         UpdateUI();
+        _techModel.currentTech = null;
+    }
+
+    public void OnConfirmClicked()
+    {
+        _techModel.AdvanceCurrentTech();
+
+        var gm = FindObjectOfType<GameManager>();
+        gm.ActionHandler.currentAP -= 2;
+        gm.UpdateHeaderUIView();
+        gm.VillageManager.UpdateBottomUIView();
+        CloseView();
     }
 
     public void UpdateUI()
@@ -131,7 +139,6 @@ public class TechViewPresenter : MonoBehaviour
     private void OnEnable()
     {
         canAdvanceTech = true;
-        Debug.LogError("blah3" + canAdvanceTech);
     }
 
     private void OnDisable()
@@ -160,6 +167,6 @@ public class TechViewPresenter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        CloseButton.interactable = (_techModel.currentTech != null);
     }
 }

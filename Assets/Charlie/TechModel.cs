@@ -30,8 +30,8 @@ public class TechModel : MonoBehaviour
         positioningChips.SetEffect(0, 0, -1, 0, 0, false, false, 0);
         techTree.addTech(positioningChips);
 
-        Tech electronicAssistant = new Tech(4, "Electronic Assistant", 30, null, "", "Allow less traveler to leave village");
-        electronicAssistant.SetEffect(0, 0, 0, 0.5f, 0, false, false, 0);
+        Tech electronicAssistant = new Tech(4, "Electronic Assistant", 30, null, "", "Increase Research Power by 1");
+        electronicAssistant.SetEffect(0, 0, 0, 1.0f, 0, false, false, 0);
         techTree.addTech(electronicAssistant);
 
         Tech performanceImprove = new Tech(5, "Performance Improve", 30, null, "", "AP +1 per turn");
@@ -46,7 +46,7 @@ public class TechModel : MonoBehaviour
         mobileHospital.SetEffect(0, 0, 0, 0, 0, true, false, 0);
         techTree.addTech(mobileHospital);
 
-        Tech theCure = new Tech(8, "The cure", 100, null, "", "The Winning condition");
+        Tech theCure = new Tech(8, "The cure", 100, null, "", "Research to win");
         theCure.SetEffect(0, 0, -1, 0, 0, false, true, 0);
         techTree.addTech(theCure);
     }
@@ -67,6 +67,11 @@ public class TechModel : MonoBehaviour
 
         if (currentTech.progress < currentTech.baseCost)
             currentTech.progress += _GameManager.investigationPower;
+        else
+        {
+            currentTech.progress = currentTech.baseCost;
+            currentTech.isComplete = true;
+        }
     }
 
     public void CheckProgress()

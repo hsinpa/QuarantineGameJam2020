@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private VillageManager villageManager;
+    public VillageManager VillageManager { get { return villageManager; } }
 
     [SerializeField]
     private OverallUIView overallUIView;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     public GameObject APSpriteObject;
 
     private ActionHandler actionHandler;
+    public ActionHandler ActionHandler { get { return this.actionHandler; } }
 
     public int investigationPower {
         get {
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
 
             int universityPlus = villageManager.villages.Sum(x =>  (int)actionHandler.GetValue(StatFlag.ActionStat.Lab, x.ID) * ((x.isVillageDestroy) ? 0 : 1) );
 
-            return baseValue + universityCount + universityPlus;
+            return baseValue + universityCount + universityPlus + (int)ActionHandler.ResearchPowerOffset;
         }
         
     }
@@ -78,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     public void NextTurn() {
         _turn_count++;
-
+        techViewPresenter?.OnNextTurn();
         actionHandler.ProceedToNextState();
 
         bool isDieaseExplode = diseaseManager.IsExplodeDisease();
@@ -90,8 +92,6 @@ public class GameManager : MonoBehaviour
 
         if (villageManager != null)
             villageManager.ProceedToNextState();
-
-        //techViewPresenter?.OnNextTurn();
 
         UpdateHeaderUIView();
 

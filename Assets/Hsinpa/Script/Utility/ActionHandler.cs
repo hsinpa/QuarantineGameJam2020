@@ -19,6 +19,7 @@ public class ActionHandler
     public static float deathRate;
     public static float spreadRate;
     public static float travelerRate;
+    public static float ResearchPowerOffset;
     public static float infectedDetectionRate;
     public static int APMOD;
     public static bool isMobileHospital;
@@ -33,7 +34,7 @@ public class ActionHandler
         actionStatList.Add(new ActionStat { ID = StatFlag.ActionStat.Quarantine, apCost = 1 });
         actionStatList.Add(new ActionStat { ID = StatFlag.ActionStat.Lab, apCost = 1 });
         actionStatList.Add(new ActionStat { ID = StatFlag.ActionStat.Cure, apCost = 1 });
-        actionStatList.Add(new ActionStat { ID = StatFlag.ActionStat.Investigate, apCost = 2 });
+        actionStatList.Add(new ActionStat { ID = StatFlag.ActionStat.Investigate, apCost = 0 });
 
         Reset();
     }
@@ -47,8 +48,10 @@ public class ActionHandler
             return gameManager.turn_count - GetValue(action_id, village_id) > 1 && currentAP >= pickAction.apCost;
 
         if (action_id == StatFlag.ActionStat.Quarantine)
-            return GetValue(action_id, village_id) <= 0;
+            return GetValue(action_id, village_id) <= 0 && currentAP >= pickAction.apCost;
 
+        if (action_id == StatFlag.ActionStat.Investigate)
+            return currentAP >= 2;
 
         return currentAP >= pickAction.apCost;
     }
@@ -108,15 +111,15 @@ public class ActionHandler
         if (this.techModel.techTree != null && this.techModel.techTree.allTechs != null) {
             foreach (Tech tech in this.techModel.techTree.allTechs) {
 
-                if (!tech.isComplete) return;
+                if (!tech.isComplete) continue;
 
                 infectRate += tech.infectRate;
                 deathRate += tech.deathRate;
                 spreadRate += tech.spreadRate;
-                travelerRate += tech.researchPowerMod;
+                ResearchPowerOffset += tech.researchPowerMod;
                 infectedDetectionRate += tech.infectedDetectionRate;
                 APMOD += tech.APMOD;
-
+                //Debug.LogError(tech.researchPowerMod);
                 if (tech.isMobileHospital)
                     isMobileHospital = true;
             }
@@ -134,6 +137,7 @@ public class ActionHandler
         deathRate = 1;
         spreadRate = 0;
         travelerRate = 1;
+        ResearchPowerOffset = 0;
         infectedDetectionRate = 0;
         APMOD = 0;
         isMobileHospital = false;
