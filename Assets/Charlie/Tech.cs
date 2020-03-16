@@ -16,14 +16,14 @@ public class Tech
     public int baseTurnToResearch;
     public List<int> dependancy;//tech ids
     //effects modifiers
-    public float infectRate;
-    public float deathRate;
+    public  float infectRate;
+    public  float deathRate;
     public float spreadRate;
-    public float researchPowerMod;
-    public float infectedDetectionRate;
-    public int APMOD;
-    public bool isMobileHospital;
-    public bool isCure;
+    public  float researchPowerMod;
+    public  float infectedDetectionRate;
+    public  int APMOD;
+    public  bool isMobileHospital;
+    public  bool isCure;
 
     public Tech(int id,string nm,int cost, List<int> dep, string imgPath, string des)
     {
@@ -49,4 +49,6 @@ public class Tech
         this.isCure = isCure;
         APMOD = AP;
     }
+
+ 
 }

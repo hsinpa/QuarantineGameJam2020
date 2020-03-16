@@ -117,12 +117,19 @@ namespace JAM.Village
             }
 
             foreach (var c_village in connectedVillages) {
-                float travelerSpawnRate = 0.35f;
-                bool spawnTraveler = Random.Range(0, 1f) < travelerSpawnRate;
+                float travelerSpawnRate = 0.35f * ActionHandler.travelerRate;
+                float rdnValue = Random.Range(0, 1f);
+
+                bool spawnTraveler = rdnValue < travelerSpawnRate;
                 if (!spawnTraveler || c_village.isVillageDestroy) continue;
 
                 int totalLeavePopulation = Mathf.RoundToInt(totalPopulation * travalerRate);
-                int infectLeavePopulation = Mathf.RoundToInt(totalLeavePopulation * Mathf.Clamp(infectRate + Random.Range(-0.05f, 0), 0, 1 ));
+                int infectLeavePopulation = Mathf.RoundToInt(totalLeavePopulation * infectRate);
+
+                Debug.Log(ActionHandler.infectedDetectionRate);
+                //Tech Effect
+                if (ActionHandler.infectedDetectionRate > rdnValue && infectLeavePopulation > 0)
+                    return;
 
                 _villageManager.CreateTravler(this, c_village, totalLeavePopulation, infectLeavePopulation, randomDisease);
 

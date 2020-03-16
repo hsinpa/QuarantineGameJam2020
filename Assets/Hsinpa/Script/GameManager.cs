@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public TextAsset skillStatJson;
 
+    [SerializeField]
+    private GameOverTipsView gameOverTipsView;
+
     private DiseaseManager diseaseManager;
 
     private VillageInputCtrl villageInputCtrl;
@@ -38,19 +41,21 @@ public class GameManager : MonoBehaviour
 
             return baseValue + universityCount + universityPlus;
         }
+        
     }
 
     private void Awake()
     {
         skillJsonBase = JsonUtility.FromJson<SkillJsonBase>(skillStatJson.text);
-
         villageInputCtrl = new VillageInputCtrl(Camera.main);
         diseaseManager = new DiseaseManager();
     }
 
     private void Start()
     {
-        actionHandler = new ActionHandler(villageManager, this);
+        actionHandler = new ActionHandler(villageManager, this, techModel);
+
+        techModel.OnTechCompleteEvent.AddListener(OnTechComplete);
 
         RegisterBottomViewEvent();
         GameInit();
@@ -63,6 +68,8 @@ public class GameManager : MonoBehaviour
         UpdateHeaderUIView();
         //villageManager.ProceedToNextState();
         techModel._GameManager = this;
+
+        techViewPresenter.gameObject.SetActive(true);
     }
 
     public void NextTurn() {
@@ -83,6 +90,9 @@ public class GameManager : MonoBehaviour
         techViewPresenter?.OnNextTurn();
 
         UpdateHeaderUIView();
+
+        if (villageManager.villageAliveCount <= 0)
+            gameOverTipsView.SetTitle("Kingdom Fall");
     }
 
     private void Update()
@@ -114,5 +124,15 @@ public class GameManager : MonoBehaviour
 
     private void RegisterBottomViewEvent() {
         overallUIView.baseButtonView.nextTurnBt.onClick.AddListener(() => NextTurn());
+    }
+
+    private void OnTechComplete(Tech tech) {
+        if (tech.isCure)
+            gameOverTipsView.SetTitle("Game Completed!");
+
+        if (tech.isComplete && !tech.isCure) {
+            techViewPresenter.gameObject.SetActive(true);
+        }
+
     }
 }

@@ -31,7 +31,7 @@ public class TechModel : MonoBehaviour
         techTree.addTech(positioningChips);
 
         Tech electronicAssistant = new Tech(4, "Electronic Assistant", 30, null, "", "electronicAssistant Description placeholder");
-        electronicAssistant.SetEffect(0, 0, 0, 2, 0, false, false, 0);
+        electronicAssistant.SetEffect(0, 0, 0, 0.5f, 0, false, false, 0);
         techTree.addTech(electronicAssistant);
 
         Tech autoTestGate = new Tech(5, "Automatic Infection Detection Gate", 30, null, "", "autoTestGate Description placeholder");

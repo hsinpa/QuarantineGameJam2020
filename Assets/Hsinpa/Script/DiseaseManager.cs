@@ -8,7 +8,7 @@ public class DiseaseManager
 {
     float explode_rate;
     int currentExplosion;
-    int maxExplosion = 3;
+    int maxExplosion = 5;
 
     public DiseaseManager() {
         Reset();
@@ -28,7 +28,7 @@ public class DiseaseManager
     }
 
     public Village GetExplodeVillage(List<Village> villages) {
-        var filteredVillage = villages.FindAll(x => !x.isDiseaseExist);
+        var filteredVillage = villages.FindAll(x => !x.isDiseaseExist && !x.isVillageDestroy);
 
         if (filteredVillage.Count <= 0) return null;
 
@@ -47,4 +47,5 @@ public class DiseaseManager
         currentExplosion = 0;
         explode_rate = 0.6f;
     }
+
 }

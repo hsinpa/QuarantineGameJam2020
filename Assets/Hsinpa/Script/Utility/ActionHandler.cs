@@ -13,8 +13,19 @@ public class ActionHandler
     private Dictionary<string, float> ActionDict;
 
     private List<ActionStat> actionStatList;
+    private TechModel techModel;
 
-    public ActionHandler(VillageManager villageManager, GameManager gameManager) {
+    public static float infectRate;
+    public static float deathRate;
+    public static float spreadRate;
+    public static float travelerRate;
+    public static float infectedDetectionRate;
+    public static int APMOD;
+    public static bool isMobileHospital;
+    public static bool isCure;
+
+    public ActionHandler(VillageManager villageManager, GameManager gameManager, TechModel techModel) {
+        this.techModel = techModel;
         ActionDict = new Dictionary<string, float>();
         this.gameManager = gameManager;
         this.villageManager = villageManager;
@@ -87,9 +98,32 @@ public class ActionHandler
 
     public void ProceedToNextState()
     {
-        //Update AP
-        currentAP = StatFlag.BaseModifier.baseAP;
+        Reset();
+        UpdateRateModifier();
 
+        //Update AP
+        currentAP = StatFlag.BaseModifier.baseAP + APMOD;
+
+    }
+
+
+    private void UpdateRateModifier() {
+        if (this.techModel.techTree != null && this.techModel.techTree.allTechs != null) {
+            foreach (Tech tech in this.techModel.techTree.allTechs) {
+
+                if (!tech.isComplete) return;
+
+                infectRate += tech.infectRate;
+                deathRate += tech.deathRate;
+                spreadRate += tech.spreadRate;
+                travelerRate += tech.researchPowerMod;
+                infectedDetectionRate += tech.infectedDetectionRate;
+                APMOD += tech.APMOD;
+
+                if (tech.isMobileHospital)
+                    isMobileHospital = true;
+            }
+        }
     }
 
     private string CombineID(string action_id, string village_id) {
@@ -98,6 +132,14 @@ public class ActionHandler
 
     public void Reset() {
         currentAP = StatFlag.BaseModifier.baseAP;
+
+        infectRate = 1;
+        deathRate = 1;
+        spreadRate = 0;
+        travelerRate = 1;
+        infectedDetectionRate = 0;
+        APMOD = 0;
+        isMobileHospital = false;
     }
 
     public struct ActionStat {

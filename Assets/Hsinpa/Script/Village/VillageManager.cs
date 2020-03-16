@@ -30,6 +30,9 @@ namespace JAM.Village {
         public int wholeInfectPopulation => villages.Sum(x => x.infectPopulation);
         public int wholedeadPopulation => villages.Sum(x => x.deadPopulation);
 
+        public int villageAliveCount => villages.Sum(x => x.isVillageDestroy ? 0 : 1);
+
+
         private int _initialPopulation;
         public int initialPopulation => _initialPopulation;
 
@@ -129,7 +132,8 @@ namespace JAM.Village {
             bool hasLabBt = (_onClickVillage != null && _onClickVillage.facility == StatFlag.Facility.University) && actionHandler.CheckActionValid(StatFlag.ActionStat.Lab, _onClickVillage.ID);
             overallUIView.baseButtonView.labBt.interactable = (hasLabBt);
 
-            bool hasHospitalBt = (_onClickVillage != null && _onClickVillage.facility == StatFlag.Facility.Hospital) && actionHandler.CheckActionValid(StatFlag.ActionStat.Cure, _onClickVillage.ID);
+            bool hasHospitalBt = ((_onClickVillage != null && _onClickVillage.facility == StatFlag.Facility.Hospital) 
+                                    && actionHandler.CheckActionValid(StatFlag.ActionStat.Cure, _onClickVillage.ID) ) || ActionHandler.isMobileHospital;
             overallUIView.baseButtonView.hospitalBt.interactable = (hasHospitalBt);
 
             bool hasQuarantineBt = (_onClickVillage != null) && actionHandler.CheckActionValid(StatFlag.ActionStat.Quarantine, _onClickVillage.ID);

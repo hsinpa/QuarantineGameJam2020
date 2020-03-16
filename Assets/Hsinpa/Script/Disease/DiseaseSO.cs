@@ -17,13 +17,13 @@ public class DiseaseSO : ScriptableObject
     public float errorRange;
 
     public float GetRndInfectRate() {
-        float rdnRate = Random.Range(infectRate - errorRange, infectRate + errorRange);
+        float rdnRate = Random.Range(infectRate - errorRange, infectRate + errorRange) * ActionHandler.infectRate;
         return Mathf.Clamp(rdnRate, 0, rdnRate);
     }
 
     public float GetRndDeathRate()
     {
-        float rdnRate = Random.Range(deathRate - errorRange, deathRate + errorRange);
+        float rdnRate = Random.Range(deathRate - errorRange, deathRate + errorRange) * ActionHandler.deathRate;
         return Mathf.Clamp(rdnRate, 0, rdnRate);
     }
 
