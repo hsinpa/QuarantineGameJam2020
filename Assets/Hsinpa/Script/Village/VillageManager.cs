@@ -119,7 +119,7 @@ namespace JAM.Village {
             overallUIView.villageInfoView.Show(village != null);
             if (village != null)
             {
-                string villageName = "Village " + village.ID;
+                string villageName = village.VillageName;
 
                 string info = "Population {0}\nInfect : {1}\nDead : {2}\nFacility : {3}";
 

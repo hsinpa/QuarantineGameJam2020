@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    private void UpdateHeaderUIView()
+    public void UpdateHeaderUIView()
     {
         //string statsInfo = "Turn {0}\nAP : {1}";
 

@@ -90,6 +90,7 @@ public class ActionHandler
         }
 
         currentAP -= pickAction.apCost;
+        gameManager.UpdateHeaderUIView();
     }
 
     public float GetValue(string action_id, string village_id = "") {
@@ -108,7 +109,6 @@ public class ActionHandler
 
         //Update AP
         currentAP = StatFlag.BaseModifier.baseAP + APMOD;
-
     }
 
 
