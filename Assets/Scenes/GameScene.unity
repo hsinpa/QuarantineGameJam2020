@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -711,7 +711,7 @@ PrefabInstance:
     - target: {fileID: 8779146215420283652, guid: b70dc4974120b114b9bc3c4747e43af1,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: -2.149994
       objectReference: {fileID: 0}
     - target: {fileID: 8779146215420283652, guid: b70dc4974120b114b9bc3c4747e43af1,
         type: 3}
@@ -721,7 +721,7 @@ PrefabInstance:
     - target: {fileID: 8779146215420283652, guid: b70dc4974120b114b9bc3c4747e43af1,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0.6737499
       objectReference: {fileID: 0}
     - target: {fileID: 8779146215420283652, guid: b70dc4974120b114b9bc3c4747e43af1,
         type: 3}
@@ -1154,6 +1154,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 259836824}
     m_Modifications:
+    - target: {fileID: 265389318349846724, guid: 936d95596ef9e8b4b8297d6ec9e67665,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2999878
+      objectReference: {fileID: 0}
     - target: {fileID: 1306215202237711945, guid: 936d95596ef9e8b4b8297d6ec9e67665,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1263,6 +1268,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameComplete
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004306062798237387, guid: 936d95596ef9e8b4b8297d6ec9e67665,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.19995117
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 936d95596ef9e8b4b8297d6ec9e67665, type: 3}
