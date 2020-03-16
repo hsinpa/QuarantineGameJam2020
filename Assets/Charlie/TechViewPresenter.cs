@@ -159,14 +159,14 @@ public class TechViewPresenter : MonoBehaviour
 
         SetUpEvents();
         PopulateGrid();
-
+        
         _techModel.OnTechCompleteEvent.AddListener (x => Debug.LogError("Research Complete="+x.techName));
-        //this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        CloseButton.interactable = (_techModel.currentTech != null);
+        CloseButton.interactable = (_techModel.currentTech != null) && FindObjectOfType<GameManager>().ActionHandler.currentAP >= 2;
     }
 }

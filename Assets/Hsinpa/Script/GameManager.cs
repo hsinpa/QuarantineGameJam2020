@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         techModel._GameManager = this;
         audioManager = FindObjectOfType<AudioManager>();
 
-        techViewPresenter.gameObject.SetActive(false);
+        //techViewPresenter.gameObject.SetActive(false);
     }
 
     public void NextTurn() {

@@ -64,20 +64,18 @@ public class TechModel : MonoBehaviour
     public void AdvanceCurrentTech()
     {
         if (currentTech == null) return;//TODO:warning window?
-
-        if (currentTech.progress < currentTech.baseCost)
-            currentTech.progress += _GameManager.investigationPower;
-        else
+        currentTech.progress += _GameManager.investigationPower;
+        if (currentTech.progress > currentTech.baseCost)
         {
             currentTech.progress = currentTech.baseCost;
-            currentTech.isComplete = true;
+            CheckProgress();
         }
     }
 
     public void CheckProgress()
     {
         if (currentTech == null) return;//TODO:warning window?
-
+        
         if (currentTech.progress >= currentTech.baseCost)
         {
             currentTech.isComplete = true;
