@@ -126,6 +126,11 @@ PrefabInstance:
       propertyPath: ID
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: VillageName
+      value: Chepstow
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}
 --- !u!4 &5587269446702761660 stripped
@@ -221,6 +226,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ID
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: VillageName
+      value: Acomb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}
@@ -323,6 +333,11 @@ PrefabInstance:
       propertyPath: facility
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: VillageName
+      value: Crasmere
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}
 --- !u!4 &5587269447839974017 stripped
@@ -418,6 +433,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ID
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: VillageName
+      value: Guthram
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}
@@ -520,6 +540,11 @@ PrefabInstance:
       propertyPath: facility
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: VillageName
+      value: Pontheugh
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}
 --- !u!4 &5587269447944272359 stripped
@@ -620,6 +645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: facility
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: VillageName
+      value: Snowbush
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}
@@ -722,6 +752,11 @@ PrefabInstance:
       propertyPath: facility
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: VillageName
+      value: Bournemouth
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}
 --- !u!4 &5587269448627280964 stripped
@@ -817,6 +852,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ID
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190520575359666444, guid: 559db86dc3b42674e9fba3ef68776b8a,
+        type: 3}
+      propertyPath: VillageName
+      value: Trudid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559db86dc3b42674e9fba3ef68776b8a, type: 3}

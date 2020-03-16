@@ -9,6 +9,8 @@ namespace JAM.Village
     {
         public string ID;
 
+        public string VillageName;
+
         [SerializeField]
         private SpritePackerSO spritePacker;
 
