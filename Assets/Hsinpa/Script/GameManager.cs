@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     public TechModel techModel;
     public TechViewPresenter techViewPresenter;
+    public AudioManager audioManager;
 
     private ActionHandler actionHandler;
 
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
         UpdateHeaderUIView();
         //villageManager.ProceedToNextState();
         techModel._GameManager = this;
+        audioManager = FindObjectOfType<AudioManager>();
 
         techViewPresenter.gameObject.SetActive(true);
     }
