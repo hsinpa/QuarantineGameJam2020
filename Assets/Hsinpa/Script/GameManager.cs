@@ -116,9 +116,9 @@ public class GameManager : MonoBehaviour
 
         //statsInfo = string.Format(statsInfo, _turn_count, actionHandler.currentAP);
 
-        string statsInfo = "Turn {0}\nAP :";
+        string statsInfo = "Turn {0}, Research Power: {1}\nAP :";
 
-        statsInfo = string.Format(statsInfo, _turn_count);
+        statsInfo = string.Format(statsInfo, _turn_count, investigationPower);
         
         for (int i = 0; i < APDisplay.transform.childCount; i++)
             Destroy(APDisplay.transform.GetChild(i).gameObject);

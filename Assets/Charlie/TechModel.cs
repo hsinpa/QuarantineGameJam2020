@@ -26,7 +26,7 @@ public class TechModel : MonoBehaviour
         superSickroom.SetEffect(0, 0.8f, 0, 0, 0, false, false, 0);
         techTree.addTech(superSickroom);
 
-        Tech positioningChips = new Tech(3, "Positioning Chips", 30, null, "", "Basic reproduction number -1");
+        Tech positioningChips = new Tech(3, "E-Assistant", 30, null, "", "Reduce basic reproduction number by 1 ");
         positioningChips.SetEffect(0, 0, -1, 0, 0, false, false, 0);
         techTree.addTech(positioningChips);
 
