@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
     {
         int idx = UnityEngine.Random.Range(0, _coughAudios.Length - 1);
 
-        _audioSource.PlayOneShot(_coughAudios[idx]);
+        _audioSource.PlayOneShot(_coughAudios[idx], 0.2f);
     }
 
     private void Awake()
